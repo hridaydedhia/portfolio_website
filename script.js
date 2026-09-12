@@ -848,4 +848,337 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // Initialize 3D Card Deck Skills System
+  initSkills3DDeck();
 });
+
+/* --------------------------------------------------------------------------
+   Interactive 3D Skill Domain Deck System
+   - Smooth and slowed-down 3D rotating card expansion animation (1800ms extract, 1500ms return)
+   - Real-time 3D flight from grid dock slot to dead-center of viewport
+   - Deep cinematic backdrop blur overlay (14px) over the entire screen
+   - Dynamic 3D perspective spin (Y-axis revolutions with subtle X-axis tilt)
+   - Mid-flight seamless face swap revealing comprehensive skill competencies
+   - Tactile return animation gliding back into resting dock with zero layout jump
+   - Resilient keyboard (ESC/Enter/Space), backdrop click, and button dismissals
+   -------------------------------------------------------------------------- */
+function initSkills3DDeck() {
+  const stage = document.getElementById('skills-deck-stage');
+  if (!stage) return;
+
+  const skillsSection = document.getElementById('skills');
+  const backdrop = document.getElementById('skills-deck-backdrop');
+  const cards = Array.from(stage.querySelectorAll('.skill-card-3d'));
+
+  let activeCard = null;
+  let activeSlot = null;
+  let isAnimating = false;
+
+  function extractCardToCenter(card) {
+    if (isAnimating || activeCard) return;
+    isAnimating = true;
+    activeCard = card;
+    activeSlot = card.closest('.skill-card-slot');
+
+    // 1. Capture geometric positions in viewport coordinates
+    const cardRect = card.getBoundingClientRect();
+    const startLeft = Math.round(cardRect.left);
+    const startTop = Math.round(cardRect.top);
+    const startW = Math.round(cardRect.width);
+    const startH = Math.round(cardRect.height);
+
+    // Active slot stays firmly anchored in grid with origin dock silhouette
+    if (activeSlot) activeSlot.classList.add('is-origin-dock');
+
+    // Dim remaining cards cleanly
+    cards.forEach((c) => {
+      if (c !== card) {
+        c.classList.add('is-card-dimmed');
+      }
+    });
+
+    // Elevate stacking contexts
+    stage.classList.add('has-active-card');
+    if (skillsSection) skillsSection.classList.add('has-active-card');
+    if (backdrop) backdrop.classList.add('is-active');
+
+    // Calculate dead-center coordinates in viewport
+    const viewportW = window.innerWidth;
+    const viewportH = window.innerHeight;
+    const targetW = Math.min(840, viewportW - 32);
+    const targetH = Math.min(650, viewportH - 48);
+    const targetLeft = Math.round((viewportW - targetW) / 2);
+    const targetTop = Math.round((viewportH - targetH) / 2);
+
+    // Position card as fixed element at its exact current dock location
+    card.classList.add('is-extracting');
+    card.style.position = 'fixed';
+    card.style.left = `${startLeft}px`;
+    card.style.top = `${startTop}px`;
+    card.style.width = `${startW}px`;
+    card.style.height = `${startH}px`;
+    card.style.zIndex = '9300';
+    card.style.margin = '0';
+
+    // Smooth, slowed-down 3D rotating animation (1800ms)
+    const anim = card.animate(
+      [
+        {
+          left: `${startLeft}px`,
+          top: `${startTop}px`,
+          width: `${startW}px`,
+          height: `${startH}px`,
+          transform: 'perspective(1400px) rotateY(0deg) rotateX(0deg) scale(1)',
+          boxShadow: '0 6px 24px rgba(0, 0, 0, 0.45), 0 0 0 rgba(255, 107, 26, 0)',
+          offset: 0
+        },
+        {
+          left: `${Math.round(startLeft + (targetLeft - startLeft) * 0.28)}px`,
+          top: `${Math.round(startTop + (targetTop - startTop) * 0.28)}px`,
+          width: `${Math.round(startW + (targetW - startW) * 0.28)}px`,
+          height: `${Math.round(startH + (targetH - startH) * 0.28)}px`,
+          transform: 'perspective(1400px) rotateY(180deg) rotateX(-3deg) scale(1.04)',
+          boxShadow: '0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 107, 26, 0.2)',
+          offset: 0.28
+        },
+        {
+          left: `${Math.round(startLeft + (targetLeft - startLeft) * 0.55)}px`,
+          top: `${Math.round(startTop + (targetTop - startTop) * 0.55)}px`,
+          width: `${Math.round(startW + (targetW - startW) * 0.55)}px`,
+          height: `${Math.round(startH + (targetH - startH) * 0.55)}px`,
+          transform: 'perspective(1400px) rotateY(360deg) rotateX(2deg) scale(1.06)',
+          boxShadow: '0 28px 70px rgba(0, 0, 0, 0.85), 0 0 45px rgba(255, 107, 26, 0.28)',
+          offset: 0.55
+        },
+        {
+          left: `${Math.round(startLeft + (targetLeft - startLeft) * 0.82)}px`,
+          top: `${Math.round(startTop + (targetTop - startTop) * 0.82)}px`,
+          width: `${Math.round(startW + (targetW - startW) * 0.82)}px`,
+          height: `${Math.round(startH + (targetH - startH) * 0.82)}px`,
+          transform: 'perspective(1400px) rotateY(540deg) rotateX(-1deg) scale(1.03)',
+          boxShadow: '0 32px 85px rgba(0, 0, 0, 0.92), 0 0 40px rgba(255, 107, 26, 0.22)',
+          offset: 0.82
+        },
+        {
+          left: `${targetLeft}px`,
+          top: `${targetTop}px`,
+          width: `${targetW}px`,
+          height: `${targetH}px`,
+          transform: 'perspective(1400px) rotateY(720deg) rotateX(0deg) scale(1)',
+          boxShadow: '0 25px 90px rgba(0, 0, 0, 0.95), 0 0 50px rgba(255, 107, 26, 0.2)',
+          offset: 1
+        }
+      ],
+      {
+        duration: 1800,
+        easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+        fill: 'forwards'
+      }
+    );
+
+    // Swap to detail face mid-spin while card is dynamically turning
+    const faceSwapTimer = setTimeout(() => {
+      if (activeCard === card) {
+        card.classList.add('is-centered-expanded');
+      }
+    }, 950);
+
+    anim.onfinish = () => {
+      // Cancel WAAPI animation to avoid persistent override of inline styles
+      anim.cancel();
+      clearTimeout(faceSwapTimer);
+
+      card.classList.add('is-centered-expanded');
+      card.style.position = 'fixed';
+      card.style.left = `${targetLeft}px`;
+      card.style.top = `${targetTop}px`;
+      card.style.width = `${targetW}px`;
+      card.style.height = `${targetH}px`;
+      card.style.transform = 'none';
+      card.style.zIndex = '9300';
+      card.setAttribute('aria-expanded', 'true');
+      isAnimating = false;
+
+      const returnBtn = card.querySelector('.btn-return-card');
+      if (returnBtn) returnBtn.focus();
+    };
+  }
+
+  function returnCardToDock() {
+    if (isAnimating || !activeCard || !activeSlot) return;
+    isAnimating = true;
+
+    const card = activeCard;
+    const slot = activeSlot;
+
+    // Viewport coordinates
+    const currentCardRect = card.getBoundingClientRect();
+    const currentLeft = Math.round(currentCardRect.left);
+    const currentTop = Math.round(currentCardRect.top);
+    const currentW = Math.round(currentCardRect.width);
+    const currentH = Math.round(currentCardRect.height);
+
+    const slotRect = slot.getBoundingClientRect();
+    const endLeft = Math.round(slotRect.left);
+    const endTop = Math.round(slotRect.top);
+    const endW = Math.round(slotRect.width);
+    const endH = Math.round(slotRect.height);
+
+    // Fade out backdrop blur and restore background cards
+    if (backdrop) backdrop.classList.remove('is-active');
+    cards.forEach((c) => c.classList.remove('is-card-dimmed'));
+
+    // Reset internal scroll position of the detail face
+    const detailFace = card.querySelector('.card-detail-face');
+    if (detailFace) detailFace.scrollTop = 0;
+
+    // Smooth, slowed-down reverse 3D flight animation back to dock (1500ms)
+    const returnAnim = card.animate(
+      [
+        {
+          left: `${currentLeft}px`,
+          top: `${currentTop}px`,
+          width: `${currentW}px`,
+          height: `${currentH}px`,
+          transform: 'perspective(1400px) rotateY(720deg) rotateX(0deg) scale(1)',
+          boxShadow: '0 25px 90px rgba(0, 0, 0, 0.95), 0 0 50px rgba(255, 107, 26, 0.2)',
+          offset: 0
+        },
+        {
+          left: `${Math.round(currentLeft + (endLeft - currentLeft) * 0.35)}px`,
+          top: `${Math.round(currentTop + (endTop - currentTop) * 0.35)}px`,
+          width: `${Math.round(currentW + (endW - currentW) * 0.35)}px`,
+          height: `${Math.round(currentH + (endH - currentH) * 0.35)}px`,
+          transform: 'perspective(1400px) rotateY(540deg) rotateX(-2deg) scale(1.04)',
+          boxShadow: '0 24px 65px rgba(0, 0, 0, 0.85), 0 0 35px rgba(255, 107, 26, 0.22)',
+          offset: 0.35
+        },
+        {
+          left: `${Math.round(currentLeft + (endLeft - currentLeft) * 0.65)}px`,
+          top: `${Math.round(currentTop + (endTop - currentTop) * 0.65)}px`,
+          width: `${Math.round(currentW + (endW - currentW) * 0.65)}px`,
+          height: `${Math.round(currentH + (endH - currentH) * 0.65)}px`,
+          transform: 'perspective(1400px) rotateY(360deg) rotateX(2deg) scale(1.03)',
+          boxShadow: '0 18px 45px rgba(0, 0, 0, 0.65), 0 0 25px rgba(255, 107, 26, 0.18)',
+          offset: 0.65
+        },
+        {
+          left: `${Math.round(currentLeft + (endLeft - currentLeft) * 0.88)}px`,
+          top: `${Math.round(currentTop + (endTop - currentTop) * 0.88)}px`,
+          width: `${Math.round(currentW + (endW - currentW) * 0.88)}px`,
+          height: `${Math.round(currentH + (endH - currentH) * 0.88)}px`,
+          transform: 'perspective(1400px) rotateY(180deg) rotateX(-1deg) scale(1.01)',
+          boxShadow: '0 10px 30px rgba(0, 0, 0, 0.5)',
+          offset: 0.88
+        },
+        {
+          left: `${endLeft}px`,
+          top: `${endTop}px`,
+          width: `${endW}px`,
+          height: `${endH}px`,
+          transform: 'perspective(1400px) rotateY(0deg) rotateX(0deg) scale(1)',
+          boxShadow: '0 6px 24px rgba(0, 0, 0, 0.45)',
+          offset: 1
+        }
+      ],
+      {
+        duration: 1500,
+        easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+        fill: 'forwards'
+      }
+    );
+
+    // Swap back to preview face midway through return spin
+    const returnSwapTimer = setTimeout(() => {
+      card.classList.remove('is-centered-expanded');
+    }, 650);
+
+    returnAnim.onfinish = () => {
+      returnAnim.cancel();
+      clearTimeout(returnSwapTimer);
+
+      card.removeAttribute('style');
+      card.classList.remove('is-extracting', 'is-centered-expanded');
+      card.setAttribute('aria-expanded', 'false');
+
+      slot.classList.remove('is-origin-dock');
+      stage.classList.remove('has-active-card');
+      if (skillsSection) skillsSection.classList.remove('has-active-card');
+
+      activeCard = null;
+      activeSlot = null;
+      isAnimating = false;
+
+      card.focus();
+    };
+  }
+
+  // Bind click and keyboard triggers to all 5 domain cards
+  cards.forEach((card) => {
+    card.addEventListener('click', (e) => {
+      // If clicking return button, dock the card
+      if (e.target.closest('.btn-return-card')) {
+        e.stopPropagation();
+        returnCardToDock();
+        return;
+      }
+
+      // If already expanded, allow normal interaction with chips/content
+      if (card.classList.contains('is-centered-expanded')) {
+        return;
+      }
+
+      extractCardToCenter(card);
+    });
+
+    card.addEventListener('keydown', (e) => {
+      if ((e.key === 'Enter' || e.key === ' ') && !card.classList.contains('is-centered-expanded')) {
+        e.preventDefault();
+        extractCardToCenter(card);
+      }
+    });
+  });
+
+  // Full-screen backdrop click closes active card
+  if (backdrop) {
+    backdrop.addEventListener('click', () => {
+      if (activeCard && !isAnimating) {
+        returnCardToDock();
+      }
+    });
+  }
+
+  // Dismiss if clicking outside the active card anywhere on page
+  document.addEventListener('click', (e) => {
+    if (activeCard && !isAnimating && activeCard.classList.contains('is-centered-expanded')) {
+      if (!activeCard.contains(e.target)) {
+        returnCardToDock();
+      }
+    }
+  });
+
+  // Escape key closes active card
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && activeCard && !isAnimating) {
+      returnCardToDock();
+    }
+  });
+
+  // Window resize handler to maintain dead center in viewport
+  window.addEventListener('resize', () => {
+    if (activeCard && activeCard.classList.contains('is-centered-expanded') && !isAnimating) {
+      const viewportW = window.innerWidth;
+      const viewportH = window.innerHeight;
+      const targetW = Math.min(840, viewportW - 32);
+      const targetH = Math.min(650, viewportH - 48);
+      const targetLeft = Math.round((viewportW - targetW) / 2);
+      const targetTop = Math.round((viewportH - targetH) / 2);
+
+      activeCard.style.left = `${targetLeft}px`;
+      activeCard.style.top = `${targetTop}px`;
+      activeCard.style.width = `${targetW}px`;
+      activeCard.style.height = `${targetH}px`;
+    }
+  });
+}

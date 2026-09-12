@@ -2048,101 +2048,644 @@ ul, ol {
 }
 
 /* --------------------------------------------------------------------------
-   8. SKILLS SECTION
-   Layout: 3 grouped badge clusters in a responsive grid (1 col mobile, 3 cols desktop).
-   Rule: NO percentage bars. Discrete category clusters with technical badges.
+   8. SKILLS SECTION: 3D CARD-TO-CENTER INTERACTIVE CAPABILITY DOMAINS
+   Architectural Deck: 5 custom domain cards with 3D extraction & laser tether
+   Strict containment within Skills section; prevents section bleeding and grid overlap
    -------------------------------------------------------------------------- */
-.skills-grid {
+.skills-section {
+  position: relative;
+  overflow: visible;
+}
+
+.skills-section.has-active-card {
+  position: relative;
+  z-index: 9000;
+}
+
+.skills-deck-stage {
+  position: relative;
+  width: 100%;
+  margin-top: 2.5rem;
+  min-height: 490px;
+}
+
+.skills-deck-stage.has-active-card {
+  z-index: 9000;
+}
+
+/* ==========================================================================
+   Full-Screen Blurred Backdrop Overlay (blurs background when card is extracted)
+   - Deep cinematic backdrop blur (14px) and dark neutral tint
+   - High z-index (9100) sits above all page sections
+   - Smooth 600ms opacity fade
+   ========================================================================== */
+.skills-deck-backdrop {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(6, 8, 14, 0.86);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 9100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skills-deck-backdrop.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* The 5 Domain Slots Grid — rigid minmax columns prevent track blowouts */
+.skills-deck-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-lg);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1.25rem;
+  width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
-@media (min-width: 640px) {
-  .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
+/* When active card is extracted or expanded, elevate grid above backdrop (9100) */
+.skills-deck-stage.has-active-card .skills-deck-grid {
+  z-index: 9150;
+}
+
+@media (max-width: 1199px) and (min-width: 820px) {
+  .skills-deck-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+  .skill-card-slot[data-domain-id="quant"],
+  .skill-card-slot[data-domain-id="design"] {
+    grid-column: span 1;
   }
 }
 
-@media (min-width: 1024px) {
-  .skills-grid {
-    grid-template-columns: repeat(3, 1fr);
+@media (max-width: 819px) and (min-width: 580px) {
+  .skills-deck-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.15rem;
+  }
+  .skill-card-slot[data-domain-id="design"] {
+    grid-column: span 2;
   }
 }
 
-.skill-cluster-card {
-  background-color: var(--bg-surface);
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-lg);
-  padding: var(--space-lg);
+@media (max-width: 579px) {
+  .skills-deck-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+/* Individual Slot — rigid height ensures dock remains anchored without layout jump */
+.skill-card-slot {
+  position: relative;
+  height: 480px;
+  min-height: 480px;
+  width: 100%;
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
-  transition: border-color var(--transition-fast), transform var(--transition-fast);
+  box-sizing: border-box;
 }
 
-.skill-cluster-card:hover {
+/* Ghost origin dock silhouette visible when card is extracted */
+.skill-card-slot.is-origin-dock {
+  border: 1px dashed rgba(255, 107, 26, 0.5);
+  border-radius: 4px;
+  background: rgba(255, 107, 26, 0.025);
+  box-shadow: inset 0 0 24px rgba(255, 107, 26, 0.06);
+}
+
+.skill-card-slot.is-origin-dock::before {
+  content: "┌                      ┐\A\A[ ORIGIN DOCK ACTIVE ]\A// 3D EXTRACTION\A\A└                      ┘";
+  white-space: pre-wrap;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: rgba(255, 107, 26, 0.7);
+  pointer-events: none;
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   The Physical 3D Skill Card
+   -------------------------------------------------------------------------- */
+.skill-card-3d {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 480px;
+  background-color: #10131a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+  transition: border-color 0.25s ease,
+              box-shadow 0.3s ease,
+              transform 0.3s ease;
+  user-select: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.skill-card-3d:focus-visible {
   border-color: var(--accent-orange);
-  transform: translateY(-2px);
+  box-shadow: 0 0 0 2px rgba(255, 107, 26, 0.4);
 }
 
-.cluster-header {
+/* Subtle physical hover elevation in resting deck */
+.skill-card-3d:not(.is-extracting):not(.is-centered-expanded):hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 107, 26, 0.4);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), 0 0 25px rgba(255, 107, 26, 0.12);
+}
+
+.skill-card-3d:not(.is-extracting):not(.is-centered-expanded):hover .card-schematic-svg {
+  filter: drop-shadow(0 0 6px rgba(255, 107, 26, 0.35));
+}
+
+.skill-card-3d:not(.is-extracting):not(.is-centered-expanded):hover .dock-action-arrow {
+  transform: translate(3px, -3px);
+  color: var(--accent-orange);
+}
+
+.skill-card-3d:not(.is-extracting):not(.is-centered-expanded):hover .card-domain-title {
+  color: #ffffff;
+}
+
+/* Dim other cards when one is extracted — NO 3D scale/translate to eliminate overlapping */
+.skill-card-3d.is-card-dimmed {
+  opacity: 0.18 !important;
+  filter: grayscale(0.7) !important;
+  pointer-events: none !important;
+  transform: none !important;
+  transition: opacity 0.5s ease, filter 0.5s ease !important;
+}
+
+/* In-flight extraction state */
+.skill-card-3d.is-extracting {
+  z-index: 9300 !important;
+  pointer-events: none;
+  transition: none !important;
+}
+
+.skill-card-3d.is-centered-expanded {
+  z-index: 9300 !important;
+  pointer-events: auto !important;
+  cursor: default;
+  border-color: rgba(255, 107, 26, 0.45) !important;
+  box-shadow: 0 25px 90px rgba(0, 0, 0, 0.95), 0 0 50px rgba(255, 107, 26, 0.2) !important;
+  transition: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   Card Faces: Preview (Deck) vs Detail (Centered Expanded)
+   -------------------------------------------------------------------------- */
+.card-face {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* --- Preview Face (Resting in Deck) --- */
+.card-preview-face {
+  padding: 1.35rem 1.25rem 1.25rem 1.25rem;
+  justify-content: space-between;
+  display: flex;
+}
+
+.card-top-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: var(--space-xs);
-  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.cluster-title {
-  font-size: var(--text-sm);
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.cluster-index {
-  font-size: var(--text-xs);
-  color: var(--accent-orange);
-}
-
-.badge-cluster {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-xs);
-}
-
-.skill-badge {
+.card-index-tag {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  color: var(--text-secondary);
-  background-color: var(--bg-primary);
-  border: 1px solid var(--border-subtle);
-  padding: 0.35rem 0.65rem;
-  border-radius: var(--radius-sm);
-  transition: color var(--transition-fast),
-              border-color var(--transition-fast),
-              background-color var(--transition-fast);
+  gap: 0.45rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #eceff4;
+  letter-spacing: 0.08em;
 }
 
-.skill-badge:hover {
+.card-index-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent-orange);
+  box-shadow: 0 0 8px rgba(255, 107, 26, 0.7);
+}
+
+.card-telemetry-tag {
+  font-size: 0.68rem;
+  color: #7b8494;
+  letter-spacing: 0.06em;
+}
+
+/* Custom Schematic Window */
+.card-visual-frame {
+  height: 112px;
+  background: rgba(0, 0, 0, 0.32);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+  margin: 0.85rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-visual-frame::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 107, 26, 0.3), transparent);
+}
+
+.card-schematic-svg {
+  width: 100%;
+  height: 100%;
+  transition: filter 0.3s ease;
+}
+
+/* Info Flow */
+.card-info-flow {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.card-domain-label {
+  font-size: 0.68rem;
   color: var(--accent-orange);
-  border-color: var(--accent-orange);
-  background-color: var(--accent-orange-dim);
+  letter-spacing: 0.1em;
+  font-weight: 600;
 }
 
-.badge-dot {
+.card-domain-title {
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+  margin: 0;
+  transition: color 0.2s ease;
+}
+
+
+.card-domain-subtitle {
+  font-size: 0.75rem;
+  color: #8c96a7;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.card-meta-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.35rem;
+}
+
+.meta-pill {
+  font-size: 0.63rem;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 0.18rem 0.45rem;
+  border-radius: 2px;
+  letter-spacing: 0.05em;
+}
+
+/* Dock Action Prompt */
+.card-dock-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: 0.85rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: #7d889b;
+}
+
+.dock-action-arrow {
+  font-size: 0.85rem;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+/* --- Detail Face (Revealed in Centered Expanded View) --- */
+.card-detail-face {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  box-sizing: border-box;
+  padding: 2rem 2.2rem;
+  background-color: #0d1017;
+  border: 1px solid rgba(255, 107, 26, 0.38);
+  border-radius: 5px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 107, 26, 0.6) rgba(255, 255, 255, 0.04);
+}
+
+.card-detail-face::-webkit-scrollbar {
+  width: 6px;
+}
+
+.card-detail-face::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.card-detail-face::-webkit-scrollbar-thumb {
+  background: rgba(255, 107, 26, 0.5);
+  border-radius: 3px;
+}
+
+/* When expanded, preview face is hidden and detail face is visible */
+.skill-card-3d.is-centered-expanded .card-preview-face {
+  display: none !important;
+}
+
+.skill-card-3d.is-centered-expanded .card-detail-face {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+/* Detail Top Nav */
+.detail-top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 1.4rem;
+}
+
+.detail-origin-info {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.origin-ping {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--accent-orange);
+  box-shadow: 0 0 10px rgba(255, 107, 26, 0.9);
+  animation: beaconPulse 1.2s ease-in-out infinite alternate;
+}
+
+.origin-label {
+  font-size: 0.72rem;
+  color: var(--accent-orange);
+  letter-spacing: 0.12em;
+  font-weight: 700;
+}
+
+/* Prominent Close/Return Button */
+.btn-return-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 107, 26, 0.08);
+  border: 1px solid rgba(255, 107, 26, 0.35);
+  color: #eceff4;
+  padding: 0.52rem 0.95rem;
+  border-radius: 3px;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 38px;
+}
+
+.btn-return-card:hover {
+  background: var(--accent-orange);
+  color: #0d0f14;
+  border-color: var(--accent-orange);
+  box-shadow: 0 4px 16px rgba(255, 107, 26, 0.4);
+}
+
+.btn-return-key {
+  color: var(--accent-orange);
+  font-weight: 700;
+}
+
+.btn-return-card:hover .btn-return-key {
+  color: #0d0f14;
+}
+
+/* Detail Domain Header */
+.detail-domain-header {
+  margin-bottom: 1.6rem;
+}
+
+.detail-badge-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-bottom: 0.65rem;
+}
+
+.detail-num-badge {
+  background: var(--accent-orange);
+  color: #0b0d13;
+  font-weight: 800;
+  font-size: 0.72rem;
+  padding: 0.18rem 0.5rem;
+  border-radius: 2px;
+}
+
+.detail-category-tag {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  letter-spacing: 0.08em;
+}
+
+
+.detail-status-pill {
+  font-size: 0.68rem;
+  color: #717d91;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.18rem 0.5rem;
+  border-radius: 2px;
+  letter-spacing: 0.06em;
+}
+
+.detail-main-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  color: #f1f5f9;
+  line-height: 1.15;
+  margin: 0.2rem 0 0.5rem 0;
+}
+
+.detail-lead-subtitle {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  max-width: 72ch;
+  margin: 0;
+}
+
+/* Subgroups Layout (For AI/ML, Finance/Quant, Languages & Tools) */
+.detail-subgroups-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  margin-bottom: 1.6rem;
+}
+
+.detail-subgroup-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.07);
+}
+
+.detail-subgroup-block:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.subgroup-header {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+}
+
+.subgroup-accent {
+  color: var(--accent-orange);
+  font-weight: 700;
+}
+
+.subgroup-title {
+  color: #cbd5e1;
+  font-weight: 700;
+}
+
+/* Skills Matrix & Badges */
+.detail-skills-matrix {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.detail-skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background-color: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  padding: 0.45rem 0.85rem;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: #e2e8f0;
+  letter-spacing: 0.02em;
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.detail-skill-chip:hover {
+  border-color: var(--accent-orange);
+  background-color: rgba(255, 107, 26, 0.09);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.chip-dot {
   width: 5px;
   height: 5px;
   border-radius: 50%;
   background-color: var(--accent-orange);
-  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+/* Detail Footer Telemetry */
+.detail-footer-telemetry {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  margin-top: auto;
+  font-size: 0.67rem;
+  color: #64748b;
+  letter-spacing: 0.06em;
+}
+
+/* Mobile Adjustments for Centered Detail Face */
+@media (max-width: 640px) {
+  .card-detail-face {
+    padding: 1.4rem 1.2rem;
+  }
+
+  .detail-main-title {
+    font-size: 1.45rem;
+  }
+
+  .detail-top-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .btn-return-card {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .detail-skill-chip {
+    font-size: 0.72rem;
+    padding: 0.38rem 0.65rem;
+  }
 }
 
 /* --------------------------------------------------------------------------
    9. PROJECTS SECTION
+
    Layout: Responsive CSS Grid (3 columns on desktop -> 1 on mobile).
    Requirements:
    - ONE unified card component used 4 times.

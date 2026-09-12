@@ -454,7 +454,7 @@
       </section>
 
       <!-- ==================================================================
-           4. SKILLS SECTION (GROUPED BADGE CLUSTERS - NO PERCENTAGE BARS)
+           4. SKILLS SECTION: 3D CARD-TO-CENTER INTERACTIVE DOMAINS
            ================================================================== -->
       <section class="section skills-section" id="skills">
         <div class="container">
@@ -462,61 +462,659 @@
             <div class="about-tag-row font-mono">
               <span class="tag-num">02</span>
               <span class="tag-slash">/</span>
-              <span class="tag-label">SKILLS</span>
+              <span class="tag-label">CAPABILITY DOMAINS</span>
             </div>
             <h2 class="section-title page-lead-title font-sans" id="skills-heading">SKILLS</h2>
             <p class="section-desc text-secondary">
-              Categorized competencies and toolchains structured as modular capabilities rather than arbitrary percentage metrics.
+              Five specialized technical domains architected as an interactive 3D card system. Click any domain card to extract it forward in 3D and explore comprehensive technical competencies.
             </p>
           </div>
 
-          <!-- Three Grouped Badge Clusters -->
-          <div class="skills-grid">
-            <!-- Cluster 1: Frontend & UI -->
-            <article class="skill-cluster-card reveal" id="skill-cluster-frontend">
-              <div class="cluster-header">
-                <h3 class="cluster-title">[Frontend Architecture &amp; UI]</h3>
-                <span class="cluster-index font-mono">01</span>
-              </div>
-              <ul class="badge-cluster" aria-label="Frontend skills list">
-                <li class="skill-badge"><span class="badge-dot" aria-hidden="true"></span>[Skill 1: TypeScript]</li>
-                <li class="skill-badge"><span class="badge-dot" aria-hidden="true"></span>[Skill 2: Modern CSS / Grid / Flexbox]</li>
-                <li class="skill-badge"><span class="badge-dot" aria-hidden="true"></span>[Skill 3: Semantic HTML5 / Accessibility]</li>
-                <li class="skill-badge"><span class="badge-dot" aria-hidden="true"></span>[Skill 4: State Management &amp; UI Architecture]</li>
-                <li class="skill-badge"><span class="badge-dot" aria-hidden="true"></span>[Skill 5: Web Performance &amp; Core Web Vitals]</li>
-              </ul>
-            </article>
+          <!-- 3D Skills Interactive Deck Stage -->
+          <div class="skills-deck-stage" id="skills-deck-stage" role="region" aria-label="Interactive 3D Skill Domain Deck">
+            <!-- Full-Screen Blurred Backdrop Overlay -->
+            <div class="skills-deck-backdrop" id="skills-deck-backdrop" aria-hidden="true"></div>
 
-            <!-- Cluster 2: Backend & Systems -->
-            <article class="skill-cluster-card reveal" id="skill-cluster-backend">
-              <div class="cluster-header">
-                <h3 class="cluster-title">[Backend &amp; Systems]</h3>
-                <span class="cluster-index font-mono">02</span>
-              </div>
-              <ul class="badge-cluster" aria-label="Backend skills list">
-                <li class="skill-badge"><span class="badge-dot" aria-hidden="true"></span>[Skill 1: Node.js / Server Runtimes]</li>
-                <li class="skill-badge"><span class="badge-dot" aria-hidden="true"></span>[Skill 2: RESTful &amp; GraphQL API Design]</li>
-                <li class="skill-badge"><span class="badge-dot" aria-hidden="true"></span>[Skill 3: Relational Databases &amp; SQL]</li>
-                <li class="skill-badge"><span class="badge-dot" aria-hidden="true"></span>[Skill 4: Authentication &amp; RBAC Protocols]</li>
-                <li class="skill-badge"><span class="badge-dot" aria-hidden="true"></span>[Skill 5: Microservices &amp; Event-Driven Systems]</li>
-              </ul>
-            </article>
+            <!-- The 5 Domain Slots Grid -->
+            <div class="skills-deck-grid" id="skills-deck-grid">
 
-            <!-- Cluster 3: Tools, DevOps & Data -->
-            <article class="skill-cluster-card reveal" id="skill-cluster-devops">
-              <div class="cluster-header">
-                <h3 class="cluster-title">[Tools, DevOps &amp; Cloud]</h3>
-                <span class="cluster-index font-mono">03</span>
+              <!-- ================= 01 — DEVELOPMENT ================= -->
+              <div class="skill-card-slot" data-domain-id="dev" id="slot-domain-dev">
+                <article class="skill-card-3d" data-domain-id="dev" id="card-domain-dev" tabindex="0" role="button" aria-expanded="false" aria-label="01: Development. Click to extract in 3D.">
+                  <!-- CARD PREVIEW FACE (Resting state in deck) -->
+                  <div class="card-face card-preview-face">
+                    <div class="card-top-bar font-mono">
+                      <div class="card-index-tag">
+                        <span class="card-index-dot" aria-hidden="true"></span>
+                        <span class="card-index-num">01</span>
+                      </div>
+                      <span class="card-telemetry-tag">// ARCH_SYS</span>
+                    </div>
+
+                    <!-- Custom Visual Schematic: Distributed System & API Gateway -->
+                    <div class="card-visual-frame" aria-hidden="true">
+                      <svg class="card-schematic-svg" viewBox="0 0 200 110" fill="none">
+                        <line x1="16" y1="22" x2="184" y2="22" stroke="rgba(255,255,255,0.06)" stroke-dasharray="2 3" />
+                        <line x1="16" y1="55" x2="184" y2="55" stroke="rgba(255,255,255,0.06)" stroke-dasharray="2 3" />
+                        <line x1="16" y1="88" x2="184" y2="88" stroke="rgba(255,255,255,0.06)" stroke-dasharray="2 3" />
+                        <rect x="20" y="44" width="22" height="22" rx="2" stroke="#8a92a1" stroke-width="1.2" fill="rgba(255,255,255,0.02)" />
+                        <circle cx="31" cy="55" r="2.8" fill="#ff6b1a" />
+                        <path d="M 42 55 L 72 55" stroke="#ff6b1a" stroke-width="1.4" stroke-dasharray="3 2" />
+                        <rect x="72" y="34" width="32" height="42" rx="3" stroke="#ff6b1a" stroke-width="1.4" fill="rgba(255,107,26,0.08)" />
+                        <text x="88" y="58" font-size="7.5" font-family="monospace" fill="#eceff4" text-anchor="middle" font-weight="700">GATEWAY</text>
+                        <path d="M 104 44 L 132 30 L 152 30" stroke="rgba(255,255,255,0.25)" stroke-width="1.2" />
+                        <path d="M 104 55 L 152 55" stroke="#ff6b1a" stroke-width="1.4" />
+                        <path d="M 104 66 L 132 80 L 152 80" stroke="rgba(255,255,255,0.25)" stroke-width="1.2" />
+                        <rect x="152" y="20" width="30" height="20" rx="2" stroke="#8a92a1" stroke-width="1" fill="rgba(255,255,255,0.03)" />
+                        <text x="167" y="33" font-size="6.5" font-family="monospace" fill="#8a92a1" text-anchor="middle">API</text>
+                        <rect x="152" y="45" width="30" height="20" rx="2" stroke="#ff6b1a" stroke-width="1.2" fill="rgba(255,107,26,0.06)" />
+                        <text x="167" y="58" font-size="6.5" font-family="monospace" fill="#ff6b1a" text-anchor="middle">CACHE</text>
+                        <rect x="152" y="70" width="30" height="20" rx="2" stroke="#8a92a1" stroke-width="1" fill="rgba(255,255,255,0.03)" />
+                        <text x="167" y="83" font-size="6.5" font-family="monospace" fill="#8a92a1" text-anchor="middle">DB_SQL</text>
+                        <circle cx="118" cy="55" r="2.2" fill="#ff6b1a" />
+                      </svg>
+                    </div>
+
+                    <div class="card-info-flow">
+                      <div class="card-domain-label font-mono">01 — DOMAIN</div>
+                      <h3 class="card-domain-title font-sans">DEVELOPMENT</h3>
+                      <p class="card-domain-subtitle font-mono">Frontend, Backend &amp; Distributed Architecture</p>
+                      <div class="card-meta-pills font-mono">
+                        <span class="meta-pill">9 CAPABILITIES</span>
+                        <span class="meta-pill">FULL-STACK</span>
+                      </div>
+                    </div>
+
+                    <div class="card-dock-action font-mono">
+                      <span class="dock-action-text">EXTRACT CARD</span>
+                      <span class="dock-action-arrow" aria-hidden="true">↗</span>
+                    </div>
+                  </div>
+
+                  <!-- CARD EXPANDED DETAIL FACE (Revealed when card is centered) -->
+                  <div class="card-face card-detail-face" aria-hidden="true">
+                    <!-- Top control bar -->
+                    <div class="detail-top-nav font-mono">
+                      <div class="detail-origin-info">
+                        <span class="origin-ping" aria-hidden="true"></span>
+                        <span class="origin-label">BAY 01 // EXTRACTION ACTIVE</span>
+                      </div>
+                      <button type="button" class="btn-return-card font-mono" aria-label="Return card to dock">
+                        <span class="btn-return-text">RETURN TO DOCK</span>
+                        <span class="btn-return-key">[ ESC ✕ ]</span>
+                      </button>
+                    </div>
+
+                    <!-- Domain Hero Header -->
+                    <div class="detail-domain-header">
+                      <div class="detail-badge-row font-mono">
+                        <span class="detail-num-badge">01</span>
+                        <span class="detail-category-tag">// FULL-STACK ARCHITECTURE</span>
+                        <span class="detail-status-pill">9 PRODUCTION SKILLS</span>
+                      </div>
+                      <h3 class="detail-main-title font-sans">DEVELOPMENT</h3>
+                      <p class="detail-lead-subtitle font-mono">
+                        Engineering scalable web architectures, resilient server pipelines, low-latency REST endpoints, robust database schemas, and seamless deployment workflows.
+                      </p>
+                    </div>
+
+                    <!-- Skills Matrix -->
+                    <div class="detail-skills-matrix">
+                      <div class="detail-skill-chip"><span class="chip-dot"></span>Frontend Development</div>
+                      <div class="detail-skill-chip"><span class="chip-dot"></span>Backend Development</div>
+                      <div class="detail-skill-chip"><span class="chip-dot"></span>REST APIs</div>
+                      <div class="detail-skill-chip"><span class="chip-dot"></span>Database Design</div>
+                      <div class="detail-skill-chip"><span class="chip-dot"></span>Authentication</div>
+                      <div class="detail-skill-chip"><span class="chip-dot"></span>Git/GitHub</div>
+                      <div class="detail-skill-chip"><span class="chip-dot"></span>Full-stack Development</div>
+                      <div class="detail-skill-chip"><span class="chip-dot"></span>Deployment</div>
+                      <div class="detail-skill-chip"><span class="chip-dot"></span>Performance &amp; Optimization</div>
+                    </div>
+
+                    <!-- Detail Card Footer Telemetry -->
+                    <div class="detail-footer-telemetry font-mono">
+                      <span class="telemetry-item">// MODULAR API SERVICES</span>
+                      <span class="telemetry-item">// ACID DATABASE CONSTRAINTS</span>
+                      <span class="telemetry-item">// REAL-TIME CONDUIT DOCKED</span>
+                    </div>
+                  </div>
+                </article>
               </div>
-              <ul class="badge-cluster" aria-label="DevOps and tooling skills list">
-                <li class="skill-badge"><span class="badge-dot" aria-hidden="true"></span>[Skill 1: Docker &amp; Containerization]</li>
-                <li class="skill-badge"><span class="badge-dot" aria-hidden="true"></span>[Skill 2: CI/CD Pipeline Automation]</li>
-                <li class="skill-badge"><span class="badge-dot" aria-hidden="true"></span>[Skill 3: Git &amp; Collaborative Workflows]</li>
-                <li class="skill-badge"><span class="badge-dot" aria-hidden="true"></span>[Skill 4: Cloud Services &amp; Serverless Deployment]</li>
-                <li class="skill-badge"><span class="badge-dot" aria-hidden="true"></span>[Skill 5: Observability, Metrics &amp; Logging]</li>
-              </ul>
-            </article>
-          </div>
+
+              <!-- ================= 02 — AI / ML ================= -->
+              <div class="skill-card-slot" data-domain-id="aiml" id="slot-domain-aiml">
+                <article class="skill-card-3d" data-domain-id="aiml" id="card-domain-aiml" tabindex="0" role="button" aria-expanded="false" aria-label="02: AI / ML. Click to extract in 3D.">
+                  <!-- CARD PREVIEW FACE -->
+                  <div class="card-face card-preview-face">
+                    <div class="card-top-bar font-mono">
+                      <div class="card-index-tag">
+                        <span class="card-index-dot" aria-hidden="true"></span>
+                        <span class="card-index-num">02</span>
+                      </div>
+                      <span class="card-telemetry-tag">// TENSOR_NET</span>
+                    </div>
+
+                    <!-- Custom Visual Schematic: Neural Graph & Vector Embedding Axes -->
+                    <div class="card-visual-frame" aria-hidden="true">
+                      <svg class="card-schematic-svg" viewBox="0 0 200 110" fill="none">
+                        <!-- Connecting synaptic links -->
+                        <line x1="30" y1="28" x2="80" y2="20" stroke="rgba(255,255,255,0.18)" stroke-width="0.8" />
+                        <line x1="30" y1="28" x2="80" y2="55" stroke="rgba(255,107,26,0.3)" stroke-width="0.9" />
+                        <line x1="30" y1="55" x2="80" y2="20" stroke="rgba(255,255,255,0.18)" stroke-width="0.8" />
+                        <line x1="30" y1="55" x2="80" y2="55" stroke="#ff6b1a" stroke-width="1.2" />
+                        <line x1="30" y1="55" x2="80" y2="90" stroke="rgba(255,255,255,0.18)" stroke-width="0.8" />
+                        <line x1="30" y1="82" x2="80" y2="55" stroke="rgba(255,107,26,0.3)" stroke-width="0.9" />
+                        <line x1="30" y1="82" x2="80" y2="90" stroke="rgba(255,255,255,0.18)" stroke-width="0.8" />
+                        
+                        <line x1="80" y1="20" x2="135" y2="35" stroke="rgba(255,255,255,0.2)" stroke-width="0.8" />
+                        <line x1="80" y1="55" x2="135" y2="35" stroke="#ff6b1a" stroke-width="1.1" />
+                        <line x1="80" y1="55" x2="135" y2="75" stroke="#ff6b1a" stroke-width="1.1" />
+                        <line x1="80" y1="90" x2="135" y2="75" stroke="rgba(255,255,255,0.2)" stroke-width="0.8" />
+
+                        <line x1="135" y1="35" x2="175" y2="55" stroke="#ff6b1a" stroke-width="1.3" />
+                        <line x1="135" y1="75" x2="175" y2="55" stroke="rgba(255,255,255,0.25)" stroke-width="0.9" />
+
+                        <!-- Nodes: Input Layer -->
+                        <circle cx="30" cy="28" r="4" fill="#141720" stroke="#8a92a1" stroke-width="1" />
+                        <circle cx="30" cy="55" r="4.5" fill="rgba(255,107,26,0.2)" stroke="#ff6b1a" stroke-width="1.2" />
+                        <circle cx="30" cy="82" r="4" fill="#141720" stroke="#8a92a1" stroke-width="1" />
+
+                        <!-- Nodes: Latent / Hidden Layer -->
+                        <circle cx="80" cy="20" r="4" fill="#141720" stroke="#8a92a1" stroke-width="1" />
+                        <circle cx="80" cy="55" r="5" fill="#ff6b1a" />
+                        <circle cx="80" cy="90" r="4" fill="#141720" stroke="#8a92a1" stroke-width="1" />
+
+                        <!-- Nodes: Dense Projection -->
+                        <circle cx="135" cy="35" r="4.5" fill="rgba(255,107,26,0.2)" stroke="#ff6b1a" stroke-width="1.2" />
+                        <circle cx="135" cy="75" r="4" fill="#141720" stroke="#8a92a1" stroke-width="1" />
+
+                        <!-- Output: Vector Anchor -->
+                        <circle cx="175" cy="55" r="5.5" fill="#141720" stroke="#ff6b1a" stroke-width="1.5" />
+                        <circle cx="175" cy="55" r="2.5" fill="#ff6b1a" />
+
+                        <!-- Coordinates overlay -->
+                        <text x="175" y="78" font-size="6.5" font-family="monospace" fill="#8a92a1" text-anchor="middle">EMBED_RAG</text>
+                      </svg>
+                    </div>
+
+                    <div class="card-info-flow">
+                      <div class="card-domain-label font-mono">02 — DOMAIN</div>
+                      <h3 class="card-domain-title font-sans">AI / ML</h3>
+                      <p class="card-domain-subtitle font-mono">Intelligent Systems, LLMs &amp; Agents</p>
+                      <div class="card-meta-pills font-mono">
+                        <span class="meta-pill">27 COMPETENCIES</span>
+                        <span class="meta-pill">RAG &amp; AGENTS</span>
+                      </div>
+                    </div>
+
+                    <div class="card-dock-action font-mono">
+                      <span class="dock-action-text">EXTRACT CARD</span>
+                      <span class="dock-action-arrow" aria-hidden="true">↗</span>
+                    </div>
+                  </div>
+
+                  <!-- CARD EXPANDED DETAIL FACE -->
+                  <div class="card-face card-detail-face" aria-hidden="true">
+                    <div class="detail-top-nav font-mono">
+                      <div class="detail-origin-info">
+                        <span class="origin-ping" aria-hidden="true"></span>
+                        <span class="origin-label">BAY 02 // EXTRACTION ACTIVE</span>
+                      </div>
+                      <button type="button" class="btn-return-card font-mono" aria-label="Return card to dock">
+                        <span class="btn-return-text">RETURN TO DECK</span>
+                        <span class="btn-return-key">[ ESC ✕ ]</span>
+                      </button>
+                    </div>
+
+                    <div class="detail-domain-header">
+                      <div class="detail-badge-row font-mono">
+                        <span class="detail-num-badge">02</span>
+                        <span class="detail-category-tag">// INTELLIGENT SYSTEMS &amp; GENERATIVE AI</span>
+                        <span class="detail-status-pill">27 COMPETENCIES</span>
+                      </div>
+                      <h3 class="detail-main-title font-sans">AI / ML</h3>
+                      <p class="detail-lead-subtitle font-mono">
+                        Designing end-to-end intelligence pipelines: from classical supervised/unsupervised machine learning to modern large language models, agentic RAG architectures, and multimodal embeddings.
+                      </p>
+                    </div>
+
+                    <!-- Structured Category Subgroups for 27 items -->
+                    <div class="detail-subgroups-layout">
+                      <!-- Subgroup A: Core Machine Learning -->
+                      <div class="detail-subgroup-block">
+                        <div class="subgroup-header font-mono">
+                          <span class="subgroup-accent">//</span>
+                          <span class="subgroup-title">CORE MACHINE LEARNING &amp; MODELING</span>
+                        </div>
+                        <div class="detail-skills-matrix">
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Machine Learning</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Supervised Learning</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Unsupervised Learning</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Regression</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Classification</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Clustering</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Feature Engineering</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Data Preprocessing</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Model Evaluation</div>
+                        </div>
+                      </div>
+
+                      <!-- Subgroup B: LLMs, Generative AI & AI Agents -->
+                      <div class="detail-subgroup-block">
+                        <div class="subgroup-header font-mono">
+                          <span class="subgroup-accent">//</span>
+                          <span class="subgroup-title">LLMs, GENERATIVE AI &amp; AGENTIC ORCHESTRATION</span>
+                        </div>
+                        <div class="detail-skills-matrix">
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>LLMs</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Generative AI</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Prompt Engineering</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>RAG</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Embeddings</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Vector Databases</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>AI Agents</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Function/Tool Calling</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>AI API Integration</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>LLM APIs</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>AI Applications</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>API Orchestration</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Automation</div>
+                        </div>
+                      </div>
+
+                      <!-- Subgroup C: Deep Learning & Deployment -->
+                      <div class="detail-subgroup-block">
+                        <div class="subgroup-header font-mono">
+                          <span class="subgroup-accent">//</span>
+                          <span class="subgroup-title">DEEP LEARNING, PERCEPTION &amp; DEPLOYMENT</span>
+                        </div>
+                        <div class="detail-skills-matrix">
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Neural Networks</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Deep Learning</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>NLP</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Computer Vision</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Reinforcement Learning</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Model Deployment</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="detail-footer-telemetry font-mono">
+                      <span class="telemetry-item">// ZERO-SHOT &amp; FEW-SHOT INFERENCE</span>
+                      <span class="telemetry-item">// VECTOR SIMILARITY COSINE SEARCH</span>
+                      <span class="telemetry-item">// AGENTIC TOOL PIPELINE</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <!-- ================= 03 — LANGUAGES & TOOLS ================= -->
+              <div class="skill-card-slot" data-domain-id="langtools" id="slot-domain-langtools">
+                <article class="skill-card-3d" data-domain-id="langtools" id="card-domain-langtools" tabindex="0" role="button" aria-expanded="false" aria-label="03: Languages &amp; Tools. Click to extract in 3D.">
+                  <!-- CARD PREVIEW FACE -->
+                  <div class="card-face card-preview-face">
+                    <div class="card-top-bar font-mono">
+                      <div class="card-index-tag">
+                        <span class="card-index-dot" aria-hidden="true"></span>
+                        <span class="card-index-num">03</span>
+                      </div>
+                      <span class="card-telemetry-tag">// TOOLCHAIN</span>
+                    </div>
+
+                    <!-- Custom Visual Schematic: Compiler AST & Polyglot Runtime -->
+                    <div class="card-visual-frame" aria-hidden="true">
+                      <svg class="card-schematic-svg" viewBox="0 0 200 110" fill="none">
+                        <!-- Terminal frame header -->
+                        <rect x="22" y="16" width="156" height="78" rx="3" stroke="rgba(255,255,255,0.12)" stroke-width="1" fill="rgba(255,255,255,0.015)" />
+                        <line x1="22" y1="32" x2="178" y2="32" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+                        <circle cx="32" cy="24" r="2" fill="#ff6b1a" />
+                        <circle cx="40" cy="24" r="2" fill="#8a92a1" />
+                        <circle cx="48" cy="24" r="2" fill="#8a92a1" />
+                        <text x="62" y="27" font-size="6.5" font-family="monospace" fill="#8a92a1">ENV // POSIX_X86</text>
+
+                        <!-- Code Prompt & AST Hierarchy -->
+                        <text x="32" y="47" font-size="7" font-family="monospace" fill="#ff6b1a">&gt; exec</text>
+                        <text x="64" y="47" font-size="7" font-family="monospace" fill="#eceff4">--target=all</text>
+
+                        <!-- AST branching tree -->
+                        <circle cx="45" cy="65" r="3" fill="#141720" stroke="#ff6b1a" stroke-width="1.2" />
+                        <line x1="48" y1="65" x2="80" y2="65" stroke="#ff6b1a" stroke-width="1.2" />
+                        <circle cx="80" cy="65" r="3" fill="#ff6b1a" />
+                        
+                        <path d="M 83 65 L 105 52 L 125 52" stroke="rgba(255,255,255,0.25)" stroke-width="1" />
+                        <circle cx="125" cy="52" r="2.5" fill="#8a92a1" />
+                        <text x="135" y="55" font-size="6.5" font-family="monospace" fill="#8a92a1">TS/PY</text>
+
+                        <path d="M 83 65 L 105 78 L 125 78" stroke="#ff6b1a" stroke-width="1" />
+                        <circle cx="125" cy="78" r="2.5" fill="#ff6b1a" />
+                        <text x="135" y="81" font-size="6.5" font-family="monospace" fill="#ff6b1a">DOCKER</text>
+                      </svg>
+                    </div>
+
+                    <div class="card-info-flow">
+                      <div class="card-domain-label font-mono">03 — DOMAIN</div>
+                      <h3 class="card-domain-title font-sans">LANGUAGES &amp; TOOLS</h3>
+                      <p class="card-domain-subtitle font-mono">Polyglot Runtimes &amp; Dev Environments</p>
+                      <div class="card-meta-pills font-mono">
+                        <span class="meta-pill">10 CORE TECHS</span>
+                        <span class="meta-pill">COMPILED &amp; SCRIPTED</span>
+                      </div>
+                    </div>
+
+                    <div class="card-dock-action font-mono">
+                      <span class="dock-action-text">EXTRACT CARD</span>
+                      <span class="dock-action-arrow" aria-hidden="true">↗</span>
+                    </div>
+                  </div>
+
+                  <!-- CARD EXPANDED DETAIL FACE -->
+                  <div class="card-face card-detail-face" aria-hidden="true">
+                    <div class="detail-top-nav font-mono">
+                      <div class="detail-origin-info">
+                        <span class="origin-ping" aria-hidden="true"></span>
+                        <span class="origin-label">BAY 03 // EXTRACTION ACTIVE</span>
+                      </div>
+                      <button type="button" class="btn-return-card font-mono" aria-label="Return card to dock">
+                        <span class="btn-return-text">RETURN TO DECK</span>
+                        <span class="btn-return-key">[ ESC ✕ ]</span>
+                      </button>
+                    </div>
+
+                    <div class="detail-domain-header">
+                      <div class="detail-badge-row font-mono">
+                        <span class="detail-num-badge">03</span>
+                        <span class="detail-category-tag">// DEVELOPMENT TOOLCHAIN</span>
+                        <span class="detail-status-pill">10 TECHNOLOGIES</span>
+                      </div>
+                      <h3 class="detail-main-title font-sans">LANGUAGES &amp; TOOLS</h3>
+                      <p class="detail-lead-subtitle font-mono">
+                        Mastery of compiled and interpreted languages paired with industry-standard containerization, version control, and developer tooling.
+                      </p>
+                    </div>
+
+                    <div class="detail-subgroups-layout">
+                      <!-- Subgroup A: Core Languages -->
+                      <div class="detail-subgroup-block">
+                        <div class="subgroup-header font-mono">
+                          <span class="subgroup-accent">//</span>
+                          <span class="subgroup-title">CORE PROGRAMMING LANGUAGES</span>
+                        </div>
+                        <div class="detail-skills-matrix">
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Python</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>C/C++</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>JavaScript</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>TypeScript</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>SQL</div>
+                        </div>
+                      </div>
+
+                      <!-- Subgroup B: Developer Tooling -->
+                      <div class="detail-subgroup-block">
+                        <div class="subgroup-header font-mono">
+                          <span class="subgroup-accent">//</span>
+                          <span class="subgroup-title">INFRASTRUCTURE &amp; DEV ENVIRONMENT</span>
+                        </div>
+                        <div class="detail-skills-matrix">
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Git</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>GitHub</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>VS Code</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Linux</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Docker</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="detail-footer-telemetry font-mono">
+                      <span class="telemetry-item">// TYPE SAFETY ENFORCEMENT</span>
+                      <span class="telemetry-item">// CONTAINERIZED DETERMINISM</span>
+                      <span class="telemetry-item">// POSIX SHELL TOOLCHAINS</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <!-- ================= 04 — FINANCE / QUANT ================= -->
+              <div class="skill-card-slot" data-domain-id="quant" id="slot-domain-quant">
+                <article class="skill-card-3d" data-domain-id="quant" id="card-domain-quant" tabindex="0" role="button" aria-expanded="false" aria-label="04: Quant Finance Aspirant. Click to extract in 3D.">
+                  <!-- CARD PREVIEW FACE -->
+                  <div class="card-face card-preview-face">
+                    <div class="card-top-bar font-mono">
+                      <div class="card-index-tag">
+                        <span class="card-index-dot" aria-hidden="true"></span>
+                        <span class="card-index-num">04</span>
+                      </div>
+                      <span class="card-telemetry-tag">// QUANT_ALPHA</span>
+                    </div>
+
+                    <!-- Custom Visual Schematic: Stochastic Price Curves & Gaussian Bell Distribution -->
+                    <div class="card-visual-frame" aria-hidden="true">
+                      <svg class="card-schematic-svg" viewBox="0 0 200 110" fill="none">
+                        <!-- Horizontal baseline & grid -->
+                        <line x1="20" y1="85" x2="180" y2="85" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
+                        <line x1="20" y1="50" x2="180" y2="50" stroke="rgba(255,255,255,0.06)" stroke-dasharray="2 3" />
+                        <line x1="20" y1="20" x2="180" y2="20" stroke="rgba(255,255,255,0.06)" stroke-dasharray="2 3" />
+
+                        <!-- Gaussian Distribution Bell Curve Overlay (subtle background) -->
+                        <path d="M 25 85 Q 75 85, 95 32 Q 100 22, 105 32 Q 125 85, 175 85" stroke="rgba(255,107,26,0.22)" stroke-width="1.2" stroke-dasharray="2 2" fill="none" />
+
+                        <!-- Stochastic Volatility Walk -->
+                        <path d="M 25 72 L 40 68 L 52 75 L 68 58 L 82 64 L 98 42 L 112 48 L 126 34 L 140 38 L 158 24 L 175 29" stroke="#ff6b1a" stroke-width="1.6" fill="none" />
+                        
+                        <!-- Peak Alpha Vector Node -->
+                        <circle cx="158" cy="24" r="3.5" fill="#ff6b1a" />
+                        <circle cx="158" cy="24" r="6" stroke="#ff6b1a" stroke-width="0.8" stroke-dasharray="2 2" />
+
+                        <!-- Candlestick indicators -->
+                        <line x1="52" y1="62" x2="52" y2="80" stroke="#8a92a1" stroke-width="1" />
+                        <rect x="50" y="68" width="4" height="7" fill="#8a92a1" />
+
+                        <line x1="98" y1="36" x2="98" y2="52" stroke="#ff6b1a" stroke-width="1" />
+                        <rect x="96" y="40" width="4" height="6" fill="#ff6b1a" />
+
+                        <line x1="140" y1="30" x2="140" y2="44" stroke="#ff6b1a" stroke-width="1" />
+                        <rect x="138" y="34" width="4" height="6" fill="#ff6b1a" />
+
+                        <!-- Formula tag -->
+                        <text x="32" y="30" font-size="6.5" font-family="monospace" fill="#8a92a1">α = f(Cov, σ)</text>
+                      </svg>
+                    </div>
+
+                    <div class="card-info-flow">
+                      <div class="card-domain-label font-mono">04 — DOMAIN</div>
+                      <h3 class="card-domain-title font-sans">FINANCE / QUANT</h3>
+                      <p class="card-domain-subtitle font-mono">Markets, Mathematical Modeling &amp; Financial Engineering</p>
+                      <div class="card-meta-pills font-mono">
+                        <span class="meta-pill">EQUITY &amp; STATS</span>
+                        <span class="meta-pill">QUANT APIs</span>
+                      </div>
+                    </div>
+
+                    <div class="card-dock-action font-mono">
+                      <span class="dock-action-text">EXTRACT CARD</span>
+                      <span class="dock-action-arrow" aria-hidden="true">↗</span>
+                    </div>
+                  </div>
+
+                  <!-- CARD EXPANDED DETAIL FACE -->
+                  <div class="card-face card-detail-face" aria-hidden="true">
+                    <div class="detail-top-nav font-mono">
+                      <div class="detail-origin-info">
+                        <span class="origin-ping" aria-hidden="true"></span>
+                        <span class="origin-label">BAY 04 // EXTRACTION ACTIVE</span>
+                      </div>
+                      <button type="button" class="btn-return-card font-mono" aria-label="Return card to dock">
+                        <span class="btn-return-text">RETURN TO DECK</span>
+                        <span class="btn-return-key">[ ESC ✕ ]</span>
+                      </button>
+                    </div>
+
+                    <div class="detail-domain-header">
+                      <div class="detail-badge-row font-mono">
+                        <span class="detail-num-badge">04</span>
+                        <span class="detail-category-tag">// QUANTITATIVE FINANCE &amp; MODELING</span>
+                        <span class="detail-status-pill">12 TARGET COMPETENCIES</span>
+                      </div>
+                      <h3 class="detail-main-title font-sans">FINANCE / QUANT</h3>
+                      <p class="detail-lead-subtitle font-mono">
+                        Synthesizing quantitative rigor with financial intuition: rigorous mathematical fundamentals, market dynamics, and algorithmic programming for alpha generation and risk modeling.
+                      </p>
+                    </div>
+
+                    <div class="detail-subgroups-layout">
+                      <!-- Subgroup A: Finance -->
+                      <div class="detail-subgroup-block">
+                        <div class="subgroup-header font-mono">
+                          <span class="subgroup-accent">//</span>
+                          <span class="subgroup-title">FINANCE</span>
+                        </div>
+                        <div class="detail-skills-matrix">
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Equity Markets</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Financial Markets</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Fundamental Analysis</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Investment Analysis</div>
+                        </div>
+                      </div>
+
+                      <!-- Subgroup B: Quantitative -->
+                      <div class="detail-subgroup-block">
+                        <div class="subgroup-header font-mono">
+                          <span class="subgroup-accent">//</span>
+                          <span class="subgroup-title">QUANTITATIVE</span>
+                        </div>
+                        <div class="detail-skills-matrix">
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Probability</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Statistics</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Algorithms</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Linear Algebra</div>
+                        </div>
+                      </div>
+
+                      <!-- Subgroup C: Programming for Finance -->
+                      <div class="detail-subgroup-block">
+                        <div class="subgroup-header font-mono">
+                          <span class="subgroup-accent">//</span>
+                          <span class="subgroup-title">PROGRAMMING FOR FINANCE</span>
+                        </div>
+                        <div class="detail-skills-matrix">
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Python for Finance</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Financial Data Analysis</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Data Visualization</div>
+                          <div class="detail-skill-chip"><span class="chip-dot"></span>Working with Financial APIs</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="detail-footer-telemetry font-mono">
+                      <span class="telemetry-item">// STATISTICAL ARBITRAGE FOUNDATIONS</span>
+                      <span class="telemetry-item">// TIME-SERIES VOLATILITY ESTIMATION</span>
+                      <span class="telemetry-item">// QUANTITATIVE RESEARCH CADENCE</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <!-- ================= 05 — DESIGN & CREATIVE ================= -->
+              <div class="skill-card-slot" data-domain-id="design" id="slot-domain-design">
+                <article class="skill-card-3d" data-domain-id="design" id="card-domain-design" tabindex="0" role="button" aria-expanded="false" aria-label="05: Design &amp; Creative. Click to extract in 3D.">
+                  <!-- CARD PREVIEW FACE -->
+                  <div class="card-face card-preview-face">
+                    <div class="card-top-bar font-mono">
+                      <div class="card-index-tag">
+                        <span class="card-index-dot" aria-hidden="true"></span>
+                        <span class="card-index-num">05</span>
+                      </div>
+                      <span class="card-telemetry-tag">// SPATIAL_UI</span>
+                    </div>
+
+                    <!-- Custom Visual Schematic: Golden Ratio & Caliper Grid -->
+                    <div class="card-visual-frame" aria-hidden="true">
+                      <svg class="card-schematic-svg" viewBox="0 0 200 110" fill="none">
+                        <!-- Golden Ratio Spiral Arc -->
+                        <path d="M 30 85 A 60 60 0 0 1 150 85 A 35 35 0 0 1 80 85 A 20 20 0 0 1 120 85 A 10 10 0 0 1 100 85" stroke="#ff6b1a" stroke-width="1.3" fill="none" />
+                        
+                        <!-- Bézier curve vector handles -->
+                        <line x1="45" y1="35" x2="85" y2="18" stroke="rgba(255,255,255,0.25)" stroke-width="0.8" />
+                        <circle cx="85" cy="18" r="2.5" fill="#8a92a1" />
+                        
+                        <line x1="145" y1="45" x2="115" y2="18" stroke="rgba(255,255,255,0.25)" stroke-width="0.8" />
+                        <circle cx="115" cy="18" r="2.5" fill="#8a92a1" />
+
+                        <path d="M 45 35 C 85 18, 115 18, 145 45" stroke="#ff6b1a" stroke-width="1.4" fill="none" />
+                        <circle cx="45" cy="35" r="3" fill="#ff6b1a" />
+                        <circle cx="145" cy="45" r="3" fill="#ff6b1a" />
+
+                        <!-- Typographic Baseline Calipers -->
+                        <line x1="25" y1="95" x2="175" y2="95" stroke="rgba(255,255,255,0.1)" stroke-width="1" />
+                        <line x1="25" y1="91" x2="25" y2="99" stroke="#ff6b1a" stroke-width="1" />
+                        <line x1="175" y1="91" x2="175" y2="99" stroke="#ff6b1a" stroke-width="1" />
+                        <text x="100" y="103" font-size="6" font-family="monospace" fill="#8a92a1" text-anchor="middle">CALIPER_RATIO // φ 1.618</text>
+                      </svg>
+                    </div>
+
+                    <div class="card-info-flow">
+                      <div class="card-domain-label font-mono">05 — DOMAIN</div>
+                      <h3 class="card-domain-title font-sans">DESIGN &amp; CREATIVE</h3>
+                      <p class="card-domain-subtitle font-mono">Interface, Spatial Experience &amp; Motion</p>
+                      <div class="card-meta-pills font-mono">
+                        <span class="meta-pill">8 DISCIPLINES</span>
+                        <span class="meta-pill">60FPS MOTION</span>
+                      </div>
+                    </div>
+
+                    <div class="card-dock-action font-mono">
+                      <span class="dock-action-text">EXTRACT CARD</span>
+                      <span class="dock-action-arrow" aria-hidden="true">↗</span>
+                    </div>
+                  </div>
+
+                  <!-- CARD EXPANDED DETAIL FACE -->
+                  <div class="card-face card-detail-face" aria-hidden="true">
+                    <div class="detail-top-nav font-mono">
+                      <div class="detail-origin-info">
+                        <span class="origin-ping" aria-hidden="true"></span>
+                        <span class="origin-label">BAY 05 // EXTRACTION ACTIVE</span>
+                      </div>
+                      <button type="button" class="btn-return-card font-mono" aria-label="Return card to dock">
+                        <span class="btn-return-text">RETURN TO DECK</span>
+                        <span class="btn-return-key">[ ESC ✕ ]</span>
+                      </button>
+                    </div>
+
+                    <div class="detail-domain-header">
+                      <div class="detail-badge-row font-mono">
+                        <span class="detail-num-badge">05</span>
+                        <span class="detail-category-tag">// INTERACTION &amp; SPATIAL UI</span>
+                        <span class="detail-status-pill">8 DISCIPLINES</span>
+                      </div>
+                      <h3 class="detail-main-title font-sans">DESIGN &amp; CREATIVE</h3>
+                      <p class="detail-lead-subtitle font-mono">
+                        Designing deliberate, high-contrast, accessible interfaces where typography, spatial rhythm, and fluid micro-interactions converge into distinct digital experiences.
+                      </p>
+                    </div>
+
+                    <!-- Skills Matrix -->
+                    <div class="detail-skills-matrix">
+                      <div class="detail-skill-chip"><span class="chip-dot"></span>UI Design</div>
+                      <div class="detail-skill-chip"><span class="chip-dot"></span>UX</div>
+                      <div class="detail-skill-chip"><span class="chip-dot"></span>Interaction Design</div>
+                      <div class="detail-skill-chip"><span class="chip-dot"></span>Visual Design</div>
+                      <div class="detail-skill-chip"><span class="chip-dot"></span>Responsive Design</div>
+                      <div class="detail-skill-chip"><span class="chip-dot"></span>Prototyping</div>
+                      <div class="detail-skill-chip"><span class="chip-dot"></span>Motion/Micro-interactions</div>
+                      <div class="detail-skill-chip"><span class="chip-dot"></span>Creative Web Design</div>
+                    </div>
+
+                    <div class="detail-footer-telemetry font-mono">
+                      <span class="telemetry-item">// WCAG AA CONTRAST STANDARDS</span>
+                      <span class="telemetry-item">// MATHEMATICAL SPATIAL SCALES</span>
+                      <span class="telemetry-item">// ZERO-SLOP EDITORIAL LAYOUT</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+            </div> <!-- /skills-deck-grid -->
+          </div> <!-- /skills-deck-stage -->
         </div>
       </section>
 
