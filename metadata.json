@@ -1,0 +1,7 @@
+{
+  "name": "Personal Portfolio",
+  "description": "Interactive, technical black-and-orange personal portfolio for Hriday Dedhia with responsive 3D depth-layered hero, cinematic typography, and dynamic hover effects.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
