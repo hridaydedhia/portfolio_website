@@ -828,4 +828,24 @@ document.addEventListener('DOMContentLoaded', () => {
       setActiveIdentity(null, true);
     }
   });
+
+  // Resume Download Button feedback and resilient download handler
+  const btnDownloadResume = document.getElementById('btn-download-resume');
+  if (btnDownloadResume) {
+    btnDownloadResume.addEventListener('click', (e) => {
+      const btnText = btnDownloadResume.querySelector('.btn-dl-text');
+      if (btnText) {
+        const originalText = btnText.textContent;
+        btnText.textContent = 'DOWNLOADING...';
+
+        setTimeout(() => {
+          btnText.textContent = 'RESUME READY ✓';
+        }, 600);
+
+        setTimeout(() => {
+          btnText.textContent = originalText;
+        }, 3200);
+      }
+    });
+  }
 });
