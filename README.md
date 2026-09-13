@@ -104,7 +104,7 @@ To preview the production build locally:
 npm run preview
 ```
 
-Or you can view the website on the published URL given:
+Or you can view the website on the published URL given: https://hriday-dedhia-protfolio.ai.studio
 
 ---
 
