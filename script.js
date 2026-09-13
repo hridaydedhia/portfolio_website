@@ -28,6 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const revealElements = document.querySelectorAll('.reveal');
   const contactForm = document.getElementById('contact-form');
   const formFeedback = document.getElementById('form-feedback');
+  const contactSuccessState = document.getElementById('contact-success-state');
+  const contactResetBtn = document.getElementById('contact-reset-btn');
+  const contactSubmitBtn = document.getElementById('contact-submit-btn');
 
   // --------------------------------------------------------------------------
   // 2. ACCESSIBLE MOBILE NAVIGATION TOGGLE
@@ -174,9 +177,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --------------------------------------------------------------------------
-  // 6. CONTACT FORM SUBMISSION & FEEDBACK
+  // 6. CONTACT FORM SUBMISSION, VALIDATION & SMOOTH SUCCESS TRANSITION
   // --------------------------------------------------------------------------
-  if (contactForm && formFeedback) {
+  if (contactForm) {
     contactForm.addEventListener('submit', (event) => {
       event.preventDefault();
 
@@ -192,35 +195,102 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Basic client-side validation
       if (!name || !email || !message) {
-        formFeedback.className = 'form-feedback is-error';
-        formFeedback.textContent = '[Error: Please provide your name, a valid email address, and a message.]';
+        if (formFeedback) {
+          formFeedback.className = 'form-feedback is-error';
+          formFeedback.textContent = 'Please provide your name, a valid email address, and a message.';
+          formFeedback.style.display = 'block';
+        }
         return;
       }
 
-      // Simple email format check
+      // Email format check
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
-        formFeedback.className = 'form-feedback is-error';
-        formFeedback.textContent = '[Error: Please enter a valid email address.]';
+        if (formFeedback) {
+          formFeedback.className = 'form-feedback is-error';
+          formFeedback.textContent = 'Please enter a valid email address.';
+          formFeedback.style.display = 'block';
+        }
         return;
       }
 
-      // Successful dispatch simulation & Mailto Trigger
-      formFeedback.className = 'form-feedback is-success';
-      formFeedback.textContent = `[System Status: Message prepared for dispatch from ${name}. Opening mail client fallback...]`;
+      // Hide any previous error feedback
+      if (formFeedback) {
+        formFeedback.className = 'form-feedback';
+        formFeedback.style.display = 'none';
+      }
 
-      const mailtoSubject = encodeURIComponent(`[Portfolio Contact] ${subject || 'New Message from ' + name}`);
+      // Update button state during transmission
+      if (contactSubmitBtn) {
+        contactSubmitBtn.disabled = true;
+        const btnText = contactSubmitBtn.querySelector('span:first-child');
+        if (btnText) btnText.textContent = 'TRANSMITTING...';
+      }
+
+      const mailtoSubject = encodeURIComponent(`[Portfolio Inquiry] ${subject || 'Inquiry from ' + name}`);
       const mailtoBody = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-      const mailtoUrl = `mailto:placeholder@example.com?subject=${mailtoSubject}&body=${mailtoBody}`;
+      const mailtoUrl = `mailto:hriday.dedhia24@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
 
-      // Reset form fields
-      contactForm.reset();
+      // Smoothly transition from form to success state
+      contactForm.style.opacity = '0';
+      contactForm.style.transform = 'translateY(-8px)';
 
-      // Trigger mailto after brief UI update
       setTimeout(() => {
-        window.location.href = mailtoUrl;
-      }, 600);
+        contactForm.style.display = 'none';
+
+        if (contactSuccessState) {
+          contactSuccessState.style.display = 'flex';
+          // Trigger reflow for transition
+          void contactSuccessState.offsetWidth;
+          contactSuccessState.classList.add('is-active');
+        }
+
+        // Trigger mailto fallback after transition
+        setTimeout(() => {
+          try {
+            window.location.href = mailtoUrl;
+          } catch {
+            // benign fallback
+          }
+        }, 500);
+      }, 300);
     });
+
+    // Reset button handler ("BACK TO CONTACT →")
+    if (contactResetBtn) {
+      contactResetBtn.addEventListener('click', () => {
+        if (contactSuccessState) {
+          contactSuccessState.classList.remove('is-active');
+          contactSuccessState.style.opacity = '0';
+          contactSuccessState.style.transform = 'translateY(8px)';
+        }
+
+        setTimeout(() => {
+          if (contactSuccessState) {
+            contactSuccessState.style.display = 'none';
+          }
+
+          // Reset form fields and submit button state
+          contactForm.reset();
+          if (contactSubmitBtn) {
+            contactSubmitBtn.disabled = false;
+            const btnText = contactSubmitBtn.querySelector('span:first-child');
+            if (btnText) btnText.textContent = 'SEND INQUIRY';
+          }
+
+          if (formFeedback) {
+            formFeedback.className = 'form-feedback';
+            formFeedback.style.display = 'none';
+          }
+
+          contactForm.style.display = 'flex';
+          // Trigger reflow
+          void contactForm.offsetWidth;
+          contactForm.style.opacity = '1';
+          contactForm.style.transform = 'translateY(0)';
+        }, 300);
+      });
+    }
   }
 
   // --------------------------------------------------------------------------
