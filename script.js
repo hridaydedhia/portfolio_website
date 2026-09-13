@@ -7,8 +7,12 @@
  *  3. IntersectionObserver Active Navigation Highlighting
  *  4. IntersectionObserver Subtle Scroll-Reveal
  *  5. Contact Form Validation & Mailto Fallback
+ *  6. Interactive 3D Skill Domain Deck System
+ *  7. Cinematic Projects Section & Dedicated Case File Engine
  * ============================================================================
  */
+
+import { initProjectsSystem } from './projects-controller.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   'use strict';
@@ -429,26 +433,33 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================================================
-  // 6. INTERACTIVE ZIG-ZAG TRAJECTORY CONDUIT & SECONDARY PATHS
+  // 6. INTERACTIVE 4-NODE ZIGZAG JOURNEY ENGINE
   // ==========================================================================
   const zigzagStage = document.getElementById('zigzag-stage');
   const guideTrack = document.getElementById('zigzag-guide-track');
   const activeTrack = document.getElementById('zigzag-active-track');
+  const verticesGroup = document.getElementById('zigzag-vertices-group');
+  const pulseDot = document.getElementById('zigzag-pulse-dot');
   const nodeRows = document.querySelectorAll('.zigzag-node-row');
   const hudTabs = document.querySelectorAll('.hud-node-tab');
-  const toggleAllBranchesBtn = document.getElementById('btn-toggle-all-branches');
-  const toggleBranchesLabel = document.getElementById('toggle-branches-label');
+  const toggleAllStagesBtn = document.getElementById('btn-toggle-all-branches');
+  const toggleStagesLabel = document.getElementById('toggle-branches-label');
 
-  let allBranchesExpanded = false;
-  let pinnedActiveNodeId = null;
+  let allStagesExpanded = false;
+  let activeNodeId = null;
+  let cachedPathLength = 0;
+  let pulseProgress = 0;
+  let pulseAnimId = null;
+  // prefersReducedMotion already declared above
 
-  // Function to calculate and render the dynamic SVG zig-zag circuit
+  // Calculate precision tactical zig-zag path with EXACTLY ONE sharp acute-angle turn for each node
   function renderZigzagConduit() {
     if (!zigzagStage || !guideTrack || !activeTrack) return;
-    // Don't render SVG on small screens where nodes stack vertically
     if (window.innerWidth < 900) {
       guideTrack.setAttribute('d', '');
       activeTrack.setAttribute('d', '');
+      if (pulseDot) pulseDot.style.opacity = '0';
+      if (verticesGroup) verticesGroup.innerHTML = '';
       return;
     }
 
@@ -468,105 +479,232 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (beacons.length < 2) return;
 
-    let pathD = `M ${beacons[0].x} ${beacons[0].y}`;
+    const stageWidth = stageRect.width;
+    const xMid = stageWidth / 2;
+    // Dynamic horizontal swing distance to guarantee a dramatic acute angle turn (< 50 deg)
+    const swingSpan = Math.min(260, Math.max(160, stageWidth * 0.24));
+
+    let pathD = `M ${Math.round(beacons[0].x)} ${Math.round(beacons[0].y)}`;
+    const allTurnVertices = [];
+
+    // Add marker for the starting node beacon
+    allTurnVertices.push({ x: Math.round(beacons[0].x), y: Math.round(beacons[0].y) });
+
     for (let i = 0; i < beacons.length - 1; i++) {
       const p1 = beacons[i];
       const p2 = beacons[i + 1];
-      const midY = (p1.y + p2.y) / 2;
-      // Smooth cybernetic curve across nodes
-      pathD += ` C ${p1.x} ${midY}, ${p2.x} ${midY}, ${p2.x} ${p2.y}`;
+      const deltaY = p2.y - p1.y;
+      if (deltaY <= 0) continue;
+
+      // When leaving a left-side beacon, open corridor swings right (+swingSpan).
+      // When leaving a right-side beacon, open corridor swings left (-swingSpan).
+      const isLeftToRight = p1.x <= p2.x;
+      const vx = isLeftToRight ? Math.round(xMid + swingSpan) : Math.round(xMid - swingSpan);
+      // Single sharp acute vertex positioned midway between the two stages
+      const vy = Math.round(p1.y + deltaY * 0.5);
+
+      // Connect with EXACTLY ONE sharp turn for this node stage
+      pathD += ` L ${vx} ${vy} L ${Math.round(p2.x)} ${Math.round(p2.y)}`;
+
+      allTurnVertices.push({ x: vx, y: vy });
+      allTurnVertices.push({ x: Math.round(p2.x), y: Math.round(p2.y) });
     }
 
     guideTrack.setAttribute('d', pathD);
     activeTrack.setAttribute('d', pathD);
+
+    // Render sharp acute diamond vertex markers at each turn and node beacon
+    if (verticesGroup) {
+      let markersHtml = '';
+      allTurnVertices.forEach((v) => {
+        markersHtml += `<polygon points="${v.x},${v.y - 5} ${v.x + 5},${v.y} ${v.x},${v.y + 5} ${v.x - 5},${v.y}" class="zigzag-vertex-diamond" />`;
+      });
+      verticesGroup.innerHTML = markersHtml;
+    }
+
+    try {
+      cachedPathLength = activeTrack.getTotalLength();
+      activeTrack.style.strokeDasharray = `${cachedPathLength}`;
+      updateScrollProgress();
+    } catch (err) {
+      cachedPathLength = 0;
+    }
   }
 
-  // Set active milestone node and toggle its secondary branch on click
-  function setActiveNode(nodeId, shouldScroll = false, toggleIfActive = true) {
-    const isCurrentlyActive = pinnedActiveNodeId === String(nodeId);
-    if (toggleIfActive && isCurrentlyActive) {
-      // User clicked the node again: collapse it!
-      pinnedActiveNodeId = null;
+  // Update progressive scroll draw of the active conduit
+  function updateScrollProgress() {
+    if (!activeTrack || !zigzagStage || cachedPathLength === 0) return;
+    if (window.innerWidth < 900) return;
+
+    if (prefersReducedMotion) {
+      activeTrack.style.strokeDashoffset = '0';
+      if (pulseDot) pulseDot.style.opacity = '0';
+      return;
+    }
+
+    const stageRect = zigzagStage.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    // Section enters at 85% of screen, completes reveal by 35% of screen
+    const startY = stageRect.top - windowHeight * 0.85;
+    const endY = stageRect.bottom - windowHeight * 0.45;
+    const totalDistance = endY - startY;
+
+    let progress = 0;
+    if (totalDistance > 0) {
+      progress = Math.min(Math.max((0 - startY) / totalDistance, 0), 1);
+    }
+
+    // Minimum visible segment so line is noticed as an active path
+    const drawnLength = Math.max(cachedPathLength * progress, 40);
+    const offset = Math.max(cachedPathLength - drawnLength, 0);
+    activeTrack.style.strokeDashoffset = `${offset}`;
+  }
+
+  // Continuous subtle orange pulse travelling along the revealed conduit
+  function animateTravelingPulse() {
+    if (prefersReducedMotion || !pulseDot || !activeTrack || cachedPathLength === 0 || window.innerWidth < 900) {
+      if (pulseDot) pulseDot.style.opacity = '0';
+      return;
+    }
+
+    pulseProgress += 0.0035;
+    if (pulseProgress > 1) {
+      pulseProgress = 0;
+    }
+
+    try {
+      // Calculate position along path based on current drawn length or full path
+      const currentLength = pulseProgress * cachedPathLength;
+      const point = activeTrack.getPointAtLength(currentLength);
+      pulseDot.setAttribute('cx', point.x);
+      pulseDot.setAttribute('cy', point.y);
+      pulseDot.style.opacity = '1';
+    } catch (e) {
+      pulseDot.style.opacity = '0';
+    }
+
+    pulseAnimId = requestAnimationFrame(animateTravelingPulse);
+  }
+
+  // Animate Node 02 Exam Statistics on Expansion
+  function animateExamStats(container) {
+    if (!container) return;
+    const cards = container.querySelectorAll('.comp-stat-card');
+    cards.forEach((card) => {
+      const targetVal = parseFloat(card.getAttribute('data-target') || '0');
+      const counterEl = card.querySelector('.counter-val');
+      const barFill = card.querySelector('.comp-stat-bar-fill');
+      const barTarget = card.getAttribute('data-bar-target') || '0%';
+
+      if (barFill) {
+        barFill.style.width = barTarget;
+      }
+
+      if (counterEl) {
+        let current = 0;
+        const duration = 1200;
+        const startTime = performance.now();
+        const isDecimal = targetVal % 1 !== 0;
+
+        function step(now) {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          // Ease out expo
+          const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+          const currentVal = targetVal * easeProgress;
+
+          if (targetVal > 1000) {
+            // e.g. 25,730
+            counterEl.textContent = Math.round(currentVal).toLocaleString();
+          } else if (isDecimal) {
+            counterEl.textContent = currentVal.toFixed(1);
+          } else {
+            counterEl.textContent = Math.round(currentVal).toString();
+          }
+
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          }
+        }
+        requestAnimationFrame(step);
+      }
+    });
+  }
+
+  // Expand / Collapse in place with non-modal subtle dimming
+  function toggleNodeExpansion(nodeId, forceState = null) {
+    const isCurrentlyActive = activeNodeId === String(nodeId);
+    const shouldBeActive = forceState !== null ? forceState : !isCurrentlyActive;
+
+    if (shouldBeActive) {
+      activeNodeId = String(nodeId);
     } else {
-      pinnedActiveNodeId = String(nodeId);
+      activeNodeId = null;
+    }
+
+    const anyActive = activeNodeId !== null || allStagesExpanded;
+    if (zigzagStage) {
+      zigzagStage.classList.toggle('has-expanded-node', anyActive);
     }
 
     nodeRows.forEach((row) => {
       const id = row.getAttribute('data-node-id');
-      const branch = row.querySelector('.secondary-branch-container');
-      const triggerBtn = row.querySelector('.btn-branch-trigger');
-      const btnText = row.querySelector('.branch-btn-text');
-      const isTarget = pinnedActiveNodeId && id === pinnedActiveNodeId;
+      const card = row.querySelector('.zigzag-node-card');
+      const unfoldContainer = row.querySelector('.node-unfold-container');
+      const ctaBtn = row.querySelector('.node-cta-button');
+      const ctaText = row.querySelector('.cta-text');
+
+      const isTarget = allStagesExpanded || (activeNodeId && id === activeNodeId);
 
       if (isTarget) {
         row.classList.add('is-active');
-        if (branch) {
-          branch.classList.add('is-expanded');
-        }
-        if (triggerBtn) {
-          triggerBtn.setAttribute('aria-expanded', 'true');
-        }
-        if (btnText) {
-          btnText.textContent = 'CLICK TO COLLAPSE';
+        if (card) card.classList.add('is-active');
+        if (unfoldContainer) unfoldContainer.classList.add('is-expanded');
+        if (ctaBtn) ctaBtn.setAttribute('aria-expanded', 'true');
+        if (ctaText) ctaText.textContent = 'CLICK TO COLLAPSE';
+
+        // Trigger Node 02 stats animation if opening node 2
+        if (id === '2' && unfoldContainer) {
+          setTimeout(() => animateExamStats(unfoldContainer), 150);
         }
       } else {
         row.classList.remove('is-active');
-        if (!allBranchesExpanded) {
-          if (branch) {
-            branch.classList.remove('is-expanded');
-          }
-          if (triggerBtn) {
-            triggerBtn.setAttribute('aria-expanded', 'false');
-          }
-          if (btnText) {
-            btnText.textContent = 'CLICK TO KNOW MORE';
-          }
-        }
+        if (card) card.classList.remove('is-active');
+        if (unfoldContainer) unfoldContainer.classList.remove('is-expanded');
+        if (ctaBtn) ctaBtn.setAttribute('aria-expanded', 'false');
+        if (ctaText) ctaText.textContent = 'EXPLORE STAGE DETAILS';
       }
     });
 
     // Update HUD Tabs
     hudTabs.forEach((tab) => {
       const tabNode = tab.getAttribute('data-node');
-      const isSelected = pinnedActiveNodeId && tabNode === pinnedActiveNodeId;
+      const isSelected = activeNodeId && tabNode === activeNodeId;
       tab.classList.toggle('active', Boolean(isSelected));
       tab.setAttribute('aria-selected', isSelected ? 'true' : 'false');
     });
 
-    // Smooth scroll if requested
-    if (shouldScroll && pinnedActiveNodeId) {
-      const targetRow = document.getElementById(`node-row-${pinnedActiveNodeId}`);
-      if (targetRow) {
-        targetRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    }
-
-    // Re-render SVG conduit after layout changes
-    requestAnimationFrame(() => {
-      setTimeout(renderZigzagConduit, 150);
-    });
+    // Re-render SVG track seamlessly after height change
+    setTimeout(renderZigzagConduit, 350);
   }
 
-  // Bind interactive click handlers on all 4 nodes
-  // Clicking anywhere on the node card or beacon toggles achievements open/closed
+  // Bind click interactions to each of the 4 nodes
   nodeRows.forEach((row) => {
     const nodeId = row.getAttribute('data-node-id');
     const card = row.querySelector('.zigzag-node-card');
     const beacon = row.querySelector('.node-anchor-beacon');
+    const ctaBtn = row.querySelector('.node-cta-button');
 
     if (card) {
       card.addEventListener('click', (e) => {
-        // If clicking on a link inside card, don't hijack
         if (e.target.closest('a')) return;
-        
-        // Clicking anywhere on the node card toggles it open / collapsed
-        setActiveNode(nodeId, false, true);
+        toggleNodeExpansion(nodeId);
       });
 
       card.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          setActiveNode(nodeId, false, true);
+          toggleNodeExpansion(nodeId);
         }
       });
     }
@@ -574,78 +712,72 @@ document.addEventListener('DOMContentLoaded', () => {
     if (beacon) {
       beacon.addEventListener('click', (e) => {
         e.stopPropagation();
-        setActiveNode(nodeId, false, true);
+        toggleNodeExpansion(nodeId);
+      });
+    }
+
+    if (ctaBtn) {
+      ctaBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleNodeExpansion(nodeId);
       });
     }
   });
 
-  // HUD Tab clicks
+  // HUD Tab navigation
   hudTabs.forEach((tab) => {
     tab.addEventListener('click', () => {
       const targetNode = tab.getAttribute('data-node');
       if (targetNode) {
-        setActiveNode(targetNode, true, true);
+        toggleNodeExpansion(targetNode, true);
+        const targetRow = document.getElementById(`node-row-${targetNode}`);
+        if (targetRow) {
+          targetRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
       }
     });
   });
 
-  // Toggle all branches button
-  if (toggleAllBranchesBtn && toggleBranchesLabel) {
-    toggleAllBranchesBtn.addEventListener('click', () => {
-      allBranchesExpanded = !allBranchesExpanded;
+  // Toggle All Stages in HUD
+  if (toggleAllStagesBtn && toggleStagesLabel) {
+    toggleAllStagesBtn.addEventListener('click', () => {
+      allStagesExpanded = !allStagesExpanded;
 
-      nodeRows.forEach((row) => {
-        const branch = row.querySelector('.secondary-branch-container');
-        const triggerBtn = row.querySelector('.btn-branch-trigger');
-        const btnText = row.querySelector('.branch-btn-text');
-
-        if (allBranchesExpanded) {
-          if (branch) branch.classList.add('is-expanded');
-          if (triggerBtn) triggerBtn.setAttribute('aria-expanded', 'true');
-          if (btnText) btnText.textContent = 'CLICK TO COLLAPSE';
-        } else {
-          const isActive = row.classList.contains('is-active');
-          if (!isActive) {
-            if (branch) branch.classList.remove('is-expanded');
-            if (triggerBtn) triggerBtn.setAttribute('aria-expanded', 'false');
-            if (btnText) btnText.textContent = 'CLICK TO KNOW MORE';
-          }
-        }
-      });
-
-      if (allBranchesExpanded) {
-        toggleBranchesLabel.textContent = 'COLLAPSE ALL BRANCHES';
-        toggleAllBranchesBtn.style.background = 'rgba(255, 107, 26, 0.2)';
+      if (allStagesExpanded) {
+        toggleStagesLabel.textContent = 'COLLAPSE ALL STAGES';
+        toggleAllStagesBtn.style.background = 'rgba(255, 107, 26, 0.2)';
+        nodeRows.forEach((row) => {
+          const id = row.getAttribute('data-node-id');
+          toggleNodeExpansion(id, true);
+        });
       } else {
-        toggleBranchesLabel.textContent = 'EXPAND ALL BRANCHES';
-        toggleAllBranchesBtn.style.background = '';
+        toggleStagesLabel.textContent = 'EXPAND ALL STAGES';
+        toggleAllStagesBtn.style.background = '';
+        activeNodeId = null;
+        if (zigzagStage) zigzagStage.classList.remove('has-expanded-node');
+        nodeRows.forEach((row) => {
+          const card = row.querySelector('.zigzag-node-card');
+          const unfoldContainer = row.querySelector('.node-unfold-container');
+          const ctaBtn = row.querySelector('.node-cta-button');
+          const ctaText = row.querySelector('.cta-text');
+
+          row.classList.remove('is-active');
+          if (card) card.classList.remove('is-active');
+          if (unfoldContainer) unfoldContainer.classList.remove('is-expanded');
+          if (ctaBtn) ctaBtn.setAttribute('aria-expanded', 'false');
+          if (ctaText) ctaText.textContent = 'EXPLORE STAGE DETAILS';
+        });
+        hudTabs.forEach((tab) => tab.classList.remove('active'));
       }
 
-      setTimeout(renderZigzagConduit, 200);
+      setTimeout(renderZigzagConduit, 350);
     });
   }
 
-  // Interactive pulse on sub-node cards
-  const subnodeCards = document.querySelectorAll('.branch-subnode-card');
-  subnodeCards.forEach((subnode) => {
-    subnode.addEventListener('mouseenter', () => {
-      const wire = subnode.querySelector('.subnode-wire');
-      if (wire) {
-        wire.style.background = 'linear-gradient(to right, var(--accent-orange), rgba(255, 107, 26, 0.8))';
-      }
-    });
-    subnode.addEventListener('mouseleave', () => {
-      const wire = subnode.querySelector('.subnode-wire');
-      if (wire) {
-        wire.style.background = '';
-      }
-    });
-  });
-
-  // Initialize SVG conduit render
-  window.addEventListener('load', () => {
-    renderZigzagConduit();
-  });
+  // Scroll listener for conduit progressive reveal
+  window.addEventListener('scroll', () => {
+    updateScrollProgress();
+  }, { passive: true });
 
   window.addEventListener('resize', () => {
     renderZigzagConduit();
@@ -658,8 +790,16 @@ document.addEventListener('DOMContentLoaded', () => {
     ro.observe(zigzagStage);
   }
 
-  // Run initial render after DOM ready
-  setTimeout(renderZigzagConduit, 100);
+  // Start continuous pulse and conduit render
+  window.addEventListener('load', () => {
+    renderZigzagConduit();
+    animateTravelingPulse();
+  });
+
+  setTimeout(() => {
+    renderZigzagConduit();
+    animateTravelingPulse();
+  }, 100);
 
   // ==========================================================================
   // 8. EDITORIAL ABOUT SECTION: CONTINUOUS ORBITAL IDENTITIES ENGINE
@@ -851,6 +991,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialize 3D Card Deck Skills System
   initSkills3DDeck();
+
+  // Initialize Asymmetric Projects & Dedicated Case Studies System
+  initProjectsSystem();
 });
 
 /* --------------------------------------------------------------------------

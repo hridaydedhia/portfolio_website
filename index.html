@@ -1138,184 +1138,364 @@
             </p>
           </div>
 
-          <div class="projects-grid" id="projects-grid">
-            <!-- PROJECT CARD 1: FEATURED / FLAGSHIP -->
-            <article class="project-card is-featured reveal" id="project-card-1">
-              <div class="card-terminal-bar">
-                <span class="terminal-title">~/projects/flagship-system.sh</span>
-                <span class="card-category-tag">[Flagship Project]</span>
-              </div>
-              <div class="card-preview-wireframe">
-                <svg class="wireframe-grid-graphic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
-                  <rect x="3" y="3" width="18" height="18" rx="2"></rect>
-                  <line x1="3" y1="9" x2="21" y2="9"></line>
-                  <line x1="9" y1="21" x2="9" y2="9"></line>
-                </svg>
-                <p class="wireframe-placeholder-text">[Flagship Project Preview / Architecture Diagram]</p>
-              </div>
-              <div class="card-body">
-                <h3 class="project-title">[Project Title 01 — Flagship Architecture]</h3>
-                <p class="project-desc">
-                  [1-2 line description highlighting architectural complexity, latency reduction, performance optimizations, and user impact. Flagship case study designated for comprehensive breakdown.]
-                </p>
-                <div class="project-tags" aria-label="Technologies used">
-                  <span class="tech-tag">[TypeScript]</span>
-                  <span class="tech-tag">[Distributed Systems]</span>
-                  <span class="tech-tag">[WebSockets]</span>
-                  <span class="tech-tag">[PostgreSQL]</span>
+          <div class="projects-editorial-stage" id="projects-editorial-stage">
+            <!-- 1. FLAGSHIP PROJECT: MARKOWITZ PORTFOLIO OPTIMIZATION (65% VISUAL WEIGHT) -->
+            <div class="flagship-column">
+              <article class="project-editorial-card flagship-card reveal" id="project-card-markowitz" data-project-id="markowitz" tabindex="0" role="region" aria-label="Flagship Project: Markowitz Portfolio Optimization Model">
+                <div class="card-terminal-bar">
+                  <div class="terminal-left font-mono">
+                    <span class="terminal-dot"></span>
+                    <span class="terminal-title">~/quant/markowitz_optimizer.py</span>
+                  </div>
+                  <span class="card-category-tag flagship-tag font-mono">[01 // FLAGSHIP SYSTEM]</span>
                 </div>
-              </div>
-              <div class="card-actions">
-                <a href="#" class="project-link" id="project-1-github" aria-label="View source code on GitHub">
-                  <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                  </svg>
-                  <span>[GitHub]</span>
-                </a>
-                <a href="#" class="project-link project-link-accent" id="project-1-demo" aria-label="Open live demo">
-                  <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                    <polyline points="15 3 21 3 21 9"></polyline>
-                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                  </svg>
-                  <span>[Live Demo ↗]</span>
-                </a>
-              </div>
-            </article>
 
-            <!-- PROJECT CARD 2 -->
-            <article class="project-card reveal" id="project-card-2">
-              <div class="card-terminal-bar">
-                <span class="terminal-title">~/projects/system-02.sh</span>
-                <span class="card-category-tag">[Web System]</span>
-              </div>
-              <div class="card-preview-wireframe">
-                <svg class="wireframe-grid-graphic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
-                  <rect x="2" y="3" width="20" height="14" rx="2"></rect>
-                  <line x1="8" y1="21" x2="16" y2="21"></line>
-                  <line x1="12" y1="17" x2="12" y2="21"></line>
-                </svg>
-                <p class="wireframe-placeholder-text">[Project Visual / Wireframe Preview]</p>
-              </div>
-              <div class="card-body">
-                <h3 class="project-title">[Project Title 02]</h3>
-                <p class="project-desc">
-                  [1-2 line description highlighting architectural complexity, latency reduction, and system scale.]
-                </p>
-                <div class="project-tags" aria-label="Technologies used">
-                  <span class="tech-tag">[JavaScript]</span>
-                  <span class="tech-tag">[API Gateway]</span>
-                  <span class="tech-tag">[Redis]</span>
-                </div>
-              </div>
-              <div class="card-actions">
-                <a href="#" class="project-link" id="project-2-github" aria-label="View source code on GitHub">
-                  <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                  </svg>
-                  <span>[GitHub]</span>
-                </a>
-                <a href="#" class="project-link project-link-accent" id="project-2-demo" aria-label="Open live demo">
-                  <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                    <polyline points="15 3 21 3 21 9"></polyline>
-                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                  </svg>
-                  <span>[Live Demo ↗]</span>
-                </a>
-              </div>
-            </article>
+                <!-- Authentic Project-Specific Visual: Efficient Frontier & Asset Weights -->
+                <div class="project-visual-stage flagship-visual-stage" aria-label="Efficient Frontier Risk-Return Curve Visualization">
+                  <svg class="project-chart-svg" viewBox="0 0 640 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="frontierGlow" x1="0%" y1="100%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#ff6b1a" stop-opacity="0.3" />
+                        <stop offset="60%" stop-color="#ff853f" stop-opacity="0.9" />
+                        <stop offset="100%" stop-color="#ffb380" stop-opacity="1" />
+                      </linearGradient>
+                      <linearGradient id="calLineGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.4" />
+                        <stop offset="100%" stop-color="#ff6b1a" stop-opacity="0.9" />
+                      </linearGradient>
+                    </defs>
 
-            <!-- PROJECT CARD 3 -->
-            <article class="project-card reveal" id="project-card-3">
-              <div class="card-terminal-bar">
-                <span class="terminal-title">~/projects/system-03.sh</span>
-                <span class="card-category-tag">[Data Platform]</span>
-              </div>
-              <div class="card-preview-wireframe">
-                <svg class="wireframe-grid-graphic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
-                  <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
-                  <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
-                  <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
-                </svg>
-                <p class="wireframe-placeholder-text">[Project Visual / Wireframe Preview]</p>
-              </div>
-              <div class="card-body">
-                <h3 class="project-title">[Project Title 03]</h3>
-                <p class="project-desc">
-                  [1-2 line description highlighting architectural complexity, latency reduction, and system scale.]
-                </p>
-                <div class="project-tags" aria-label="Technologies used">
-                  <span class="tech-tag">[Data Pipeline]</span>
-                  <span class="tech-tag">[Python]</span>
-                  <span class="tech-tag">[PostgreSQL]</span>
-                </div>
-              </div>
-              <div class="card-actions">
-                <a href="#" class="project-link" id="project-3-github" aria-label="View source code on GitHub">
-                  <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                  </svg>
-                  <span>[GitHub]</span>
-                </a>
-                <a href="#" class="project-link project-link-accent" id="project-3-demo" aria-label="Open live demo">
-                  <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                    <polyline points="15 3 21 3 21 9"></polyline>
-                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                  </svg>
-                  <span>[Live Demo ↗]</span>
-                </a>
-              </div>
-            </article>
+                    <!-- Coordinate Grid lines -->
+                    <g class="chart-grid" stroke="#1f2430" stroke-width="1" stroke-dasharray="3 3">
+                      <line x1="50" y1="40" x2="600" y2="40" />
+                      <line x1="50" y1="100" x2="600" y2="100" />
+                      <line x1="50" y1="160" x2="600" y2="160" />
+                      <line x1="50" y1="220" x2="600" y2="220" />
+                      <line x1="50" y1="280" x2="600" y2="280" />
+                      <line x1="120" y1="30" x2="120" y2="280" />
+                      <line x1="240" y1="30" x2="240" y2="280" />
+                      <line x1="360" y1="30" x2="360" y2="280" />
+                      <line x1="480" y1="30" x2="480" y2="280" />
+                    </g>
 
-            <!-- PROJECT CARD 4 -->
-            <article class="project-card reveal" id="project-card-4">
-              <div class="card-terminal-bar">
-                <span class="terminal-title">~/projects/system-04.sh</span>
-                <span class="card-category-tag">[Developer Tooling]</span>
+                    <!-- Axes -->
+                    <line x1="50" y1="280" x2="610" y2="280" stroke="#374151" stroke-width="1.5" />
+                    <line x1="50" y1="280" x2="50" y2="20" stroke="#374151" stroke-width="1.5" />
+
+                    <!-- Axis Labels -->
+                    <text x="590" y="302" fill="#676e80" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="end">ANNUALIZED VOLATILITY (σ)</text>
+                    <text x="24" y="30" fill="#676e80" font-family="'JetBrains Mono', monospace" font-size="10" transform="rotate(-90 24 30)" text-anchor="end">EXPECTED RETURN E[R]</text>
+
+                    <!-- Monte Carlo Portfolios Cloud -->
+                    <g class="chart-cloud" opacity="0.6">
+                      <circle cx="160" cy="245" r="2.5" fill="#4b5563" />
+                      <circle cx="180" cy="225" r="2.5" fill="#4b5563" />
+                      <circle cx="195" cy="210" r="3" fill="#6b7280" />
+                      <circle cx="210" cy="235" r="2" fill="#4b5563" />
+                      <circle cx="225" cy="190" r="3.5" fill="#ff6b1a" fill-opacity="0.35" />
+                      <circle cx="240" cy="215" r="2.5" fill="#6b7280" />
+                      <circle cx="255" cy="175" r="3" fill="#ff6b1a" fill-opacity="0.4" />
+                      <circle cx="270" cy="195" r="2.5" fill="#6b7280" />
+                      <circle cx="290" cy="150" r="3.5" fill="#ff6b1a" fill-opacity="0.5" />
+                      <circle cx="310" cy="180" r="2" fill="#4b5563" />
+                      <circle cx="325" cy="135" r="3" fill="#ff6b1a" fill-opacity="0.6" />
+                      <circle cx="340" cy="165" r="3" fill="#6b7280" />
+                      <circle cx="360" cy="120" r="3.5" fill="#ff853f" fill-opacity="0.7" />
+                      <circle cx="380" cy="140" r="2.5" fill="#6b7280" />
+                      <circle cx="410" cy="105" r="3" fill="#ff853f" fill-opacity="0.75" />
+                      <circle cx="440" cy="130" r="2" fill="#4b5563" />
+                      <circle cx="470" cy="92" r="3" fill="#ffaa70" fill-opacity="0.8" />
+                      <circle cx="500" cy="115" r="2.5" fill="#6b7280" />
+                      <circle cx="530" cy="85" r="3" fill="#ffaa70" fill-opacity="0.85" />
+                    </g>
+
+                    <!-- Capital Allocation Line (CAL) from Risk-Free Rate Rf -->
+                    <line x1="50" y1="240" x2="520" y2="45" stroke="url(#calLineGrad)" stroke-width="1.5" stroke-dasharray="4 2" />
+                    <circle cx="50" cy="240" r="3.5" fill="#3b82f6" />
+                    <text x="58" y="244" fill="#93c5fd" font-family="'JetBrains Mono', monospace" font-size="9">Rf = 4.2%</text>
+
+                    <!-- The Analytical Efficient Frontier Curve -->
+                    <path d="M 140 230 C 170 180, 230 110, 360 85 C 440 70, 520 62, 570 58" fill="none" stroke="url(#frontierGlow)" stroke-width="3" stroke-linecap="round" />
+
+                    <!-- Minimum Volatility Portfolio Marker -->
+                    <g class="marker-min-vol">
+                      <rect x="136" y="226" width="8" height="8" fill="#10b981" transform="rotate(45 140 230)" />
+                      <text x="110" y="215" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="600">MIN VOL [σ: 8.4%]</text>
+                    </g>
+
+                    <!-- Tangency / Max Sharpe Portfolio Marker (Glowing target) -->
+                    <g class="marker-max-sharpe">
+                      <circle cx="340" cy="92" r="9" stroke="#ff6b1a" stroke-width="1.5" stroke-dasharray="2 2" opacity="0.8" />
+                      <circle cx="340" cy="92" r="5" fill="#ff6b1a" />
+                      <circle cx="340" cy="92" r="2" fill="#ffffff" />
+                      <line x1="340" y1="92" x2="420" y2="55" stroke="#ff6b1a" stroke-width="1" />
+                      <rect x="420" y="38" width="168" height="30" rx="3" fill="#181b24" stroke="#ff6b1a" stroke-width="1" />
+                      <text x="428" y="52" fill="#f0f2f7" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="600">MAX SHARPE RATIO: 1.48</text>
+                      <text x="428" y="63" fill="#9aa1b2" font-family="'JetBrains Mono', monospace" font-size="8">E[R]: 24.8% | σ: 14.2%</text>
+                    </g>
+                  </svg>
+
+                  <!-- Telemetry readout strip -->
+                  <div class="visual-telemetry-bar font-mono">
+                    <span class="telemetry-item"><strong class="telemetry-label">MODEL:</strong> Modern Portfolio Theory</span>
+                    <span class="telemetry-item"><strong class="telemetry-label">SOLVER:</strong> SciPy SLSQP</span>
+                    <span class="telemetry-item highlight"><strong class="telemetry-label">OPTIMAL SHARPE:</strong> 1.48</span>
+                  </div>
+                </div>
+
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="card-title-group">
+                    <h3 class="project-title font-sans">MARKOWITZ PORTFOLIO OPTIMIZATION</h3>
+                    <p class="project-desc text-secondary">
+                      Portfolio optimization engine based on Modern Portfolio Theory, generating mathematical efficient frontiers and Sharpe-optimal asset allocations through constrained numerical quadratic programming.
+                    </p>
+                  </div>
+
+                  <!-- Tech Stack Chips (3-5 required) -->
+                  <div class="project-tags font-mono" aria-label="Technologies used">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Streamlit</span>
+                    <span class="tech-tag">SciPy</span>
+                    <span class="tech-tag">pandas</span>
+                    <span class="tech-tag">yfinance</span>
+                  </div>
+                </div>
+
+                <!-- Interaction Link -->
+                <div class="card-actions">
+                  <span class="view-project-trigger font-mono">
+                    <span>VIEW PROJECT</span>
+                    <span class="action-arrow" aria-hidden="true">→</span>
+                  </span>
+                </div>
+              </article>
+
+              <!-- 2. SUPPORTING PROJECT: CAPM MODEL (RECTANGLE LAYOUT BELOW MARKOWITZ WITH SAME LENGTH & COMPACT HEIGHT) -->
+              <article class="project-editorial-card supporting-card capm-wide-card reveal" id="project-card-capm" data-project-id="capm" tabindex="0" role="region" aria-label="Quantitative Research Project: CAPM Model">
+                <div class="card-terminal-bar">
+                  <div class="terminal-left font-mono">
+                    <span class="terminal-dot"></span>
+                    <span class="terminal-title">~/quant/capm_model.py</span>
+                  </div>
+                  <span class="card-category-tag font-mono">[02 // QUANT RESEARCH]</span>
+                </div>
+
+                <div class="capm-wide-inner">
+                  <div class="project-visual-stage supporting-visual-stage capm-visual-stage" aria-label="CAPM Risk-Return SML Diagram">
+                    <svg class="project-chart-svg" viewBox="0 0 400 130" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <!-- Grid Lines -->
+                      <line x1="40" y1="105" x2="380" y2="105" stroke="#252a36" stroke-width="1" />
+                      <line x1="40" y1="20" x2="40" y2="105" stroke="#252a36" stroke-width="1" />
+                      <!-- Axis Labels -->
+                      <text x="375" y="122" fill="#676e80" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="end">BETA (β)</text>
+                      <text x="18" y="24" fill="#676e80" font-family="'JetBrains Mono', monospace" font-size="8" transform="rotate(-90 18 24)" text-anchor="end">E[R]</text>
+                      <!-- SML Line -->
+                      <line x1="40" y1="90" x2="360" y2="25" stroke="#ff6b1a" stroke-width="1.8" />
+                      <!-- Historical Points & Regression -->
+                      <circle cx="100" cy="82" r="2.5" fill="#4b5563" />
+                      <circle cx="160" cy="68" r="2.5" fill="#6b7280" />
+                      <circle cx="210" cy="56" r="3" fill="#9ca3af" />
+                      <circle cx="270" cy="40" r="3" fill="#ff853f" />
+                      <circle cx="320" cy="32" r="2.5" fill="#6b7280" />
+                      <!-- Target Stock Beta Callout -->
+                      <g>
+                        <circle cx="245" cy="38" r="4.5" stroke="#ff6b1a" stroke-width="1.5" fill="#ff6b1a" fill-opacity="0.3" />
+                        <line x1="245" y1="38" x2="245" y2="50" stroke="#10b981" stroke-width="1.2" stroke-dasharray="2 1" />
+                        <text x="255" y="42" fill="#f0f2f7" font-family="'JetBrains Mono', monospace" font-size="8">β = 1.24 (α: +2.1%)</text>
+                      </g>
+                    </svg>
+                    <!-- Telemetry strip -->
+                    <div class="visual-telemetry-bar capm-telemetry-bar font-mono">
+                      <span class="telemetry-item"><strong class="telemetry-label">REGIME:</strong> OLS Reg</span>
+                      <span class="telemetry-item highlight"><strong class="telemetry-label">BETA (β):</strong> 1.24</span>
+                      <span class="telemetry-item"><strong class="telemetry-label">R²:</strong> 0.74</span>
+                    </div>
+                  </div>
+
+                  <div class="card-body capm-card-body">
+                    <div class="card-title-group">
+                      <h3 class="project-title font-sans">CAPM MODEL</h3>
+                      <p class="project-desc text-secondary">
+                        Asset pricing engine evaluating systematic market risk, expected returns, and Beta coefficients using historical data with ML-based market regime analysis.
+                      </p>
+                    </div>
+                    <div class="project-tags font-mono">
+                      <span class="tech-tag">Python</span>
+                      <span class="tech-tag">Scikit-learn</span>
+                      <span class="tech-tag">Streamlit</span>
+                      <span class="tech-tag">yFinance</span>
+                    </div>
+                    <div class="card-actions capm-actions">
+                      <span class="view-project-trigger font-mono">
+                        <span>VIEW PROJECT</span>
+                        <span class="action-arrow" aria-hidden="true">→</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- 2. SUPPORTING PROJECTS COLUMN (STOCKMASTER IN PLACE OF CAPM, FOLLOWED BY PAISADIARY) -->
+            <div class="supporting-column">
+              <!-- SUPPORTING PROJECT 1: STOCKMASTER (SHIFTED IN PLACE OF CAPM) -->
+              <article class="project-editorial-card supporting-card reveal" id="project-card-stockmaster" data-project-id="stockmaster" tabindex="0" role="region" aria-label="Supporting Project: StockMaster - Real-time Inventory System">
+                <div class="card-terminal-bar">
+                  <div class="terminal-left font-mono">
+                    <span class="terminal-dot"></span>
+                    <span class="terminal-title">~/systems/stockmaster.ts</span>
+                  </div>
+                  <span class="card-category-tag font-mono">[03 // SYSTEMS & ML]</span>
+                </div>
+
+                <div class="project-visual-stage supporting-visual-stage" aria-label="StockMaster Predictive Restocking Visual">
+                  <svg class="project-chart-svg" viewBox="0 0 400 130" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <line x1="30" y1="105" x2="380" y2="105" stroke="#252a36" stroke-width="1" />
+                    <!-- Threshold Line -->
+                    <line x1="30" y1="65" x2="380" y2="65" stroke="#ef4444" stroke-width="1" stroke-dasharray="3 3" opacity="0.8" />
+                    <text x="375" y="60" fill="#ef4444" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="end">REORDER POINT (ROP)</text>
+                    <!-- Depletion Curve -->
+                    <path d="M 30 25 L 120 40 L 190 55 L 260 70 L 330 85" stroke="#ff6b1a" stroke-width="1.8" stroke-linecap="round" />
+                    <!-- Projected Restock Inflow -->
+                    <path d="M 260 70 L 260 30 L 370 45" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3 2" />
+                    <circle cx="260" cy="70" r="3.5" fill="#ef4444" />
+                    <text x="210" y="85" fill="#f0f2f7" font-family="'JetBrains Mono', monospace" font-size="8">TRIGGER DISPATCH</text>
+                  </svg>
+                </div>
+
+                <div class="card-body">
+                  <div class="card-title-group">
+                    <h3 class="project-title font-sans">STOCKMASTER</h3>
+                    <p class="project-desc text-secondary">
+                      Full-stack inventory monitoring and predictive restocking platform that uses historical consumption velocity to trigger automated replenishment alerts.
+                    </p>
+                  </div>
+                  <div class="project-tags font-mono">
+                    <span class="tech-tag">React.js</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">SQL</span>
+                    <span class="tech-tag">Scikit-learn</span>
+                  </div>
+                </div>
+
+                <div class="card-actions">
+                  <span class="view-project-trigger font-mono">
+                    <span>VIEW PROJECT</span>
+                    <span class="action-arrow" aria-hidden="true">→</span>
+                  </span>
+                </div>
+              </article>
+
+              <!-- SUPPORTING PROJECT 2: PAISADIARY (MINI HACKATHON WINNER) -->
+              <article class="project-editorial-card supporting-card reveal" id="project-card-paisadiary" data-project-id="paisadiary" tabindex="0" role="region" aria-label="Supporting Project: PaisaDiary - College Mini Hackathon Winner">
+                <div class="card-terminal-bar">
+                  <div class="terminal-left font-mono">
+                    <span class="terminal-dot"></span>
+                    <span class="terminal-title">~/apps/paisadiary.js</span>
+                  </div>
+                  <span class="card-category-tag hackathon-tag font-mono">★ MINI HACKATHON WINNER [04]</span>
+                </div>
+
+                <div class="project-visual-stage supporting-visual-stage" aria-label="PaisaDiary AI Expense Parser Visual">
+                  <div class="ai-console-mockup font-mono">
+                    <div class="console-line input-line">
+                      <span class="prompt-sym">&gt;</span>
+                      <span class="prompt-text">"Paid ₹1,420 for team dinner via UPI"</span>
+                    </div>
+                    <div class="console-line parse-line">
+                      <span class="arrow-sym">↳</span>
+                      <span class="token-pill">CAT: DINING</span>
+                      <span class="token-pill">₹1,420</span>
+                      <span class="token-pill">UPI</span>
+                      <span class="status-pill">SQL: OK</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card-body">
+                  <div class="card-title-group">
+                    <h3 class="project-title font-sans">PAISADIARY</h3>
+                    <p class="project-desc text-secondary">
+                      AI-powered expense tracking application utilizing Gemini for natural-language expense classification and structured SQL logging. Won 1st Place at college mini hackathon.
+                    </p>
+                  </div>
+                  <div class="project-tags font-mono">
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Gemini API</span>
+                    <span class="tech-tag">SQL</span>
+                    <span class="tech-tag">AI Studio</span>
+                  </div>
+                </div>
+
+                <div class="card-actions">
+                  <span class="view-project-trigger font-mono">
+                    <span>VIEW PROJECT</span>
+                    <span class="action-arrow" aria-hidden="true">→</span>
+                  </span>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <!-- Cinematic Full-Page Navigation Transition Portal -->
+          <div class="page-nav-portal" id="page-nav-portal" aria-hidden="true">
+            <div class="portal-shutter portal-shutter-top"></div>
+            <div class="portal-shutter portal-shutter-bottom"></div>
+            <div class="portal-laser-scan"></div>
+            
+            <div class="portal-hud font-mono">
+              <div class="portal-hud-badge">
+                <span class="portal-dot"></span>
+                <span class="portal-status-text" id="portal-status-text">INITIALIZING PROJECT ROUTE</span>
               </div>
-              <div class="card-preview-wireframe">
-                <svg class="wireframe-grid-graphic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
-                  <polyline points="16 18 22 12 16 6"></polyline>
-                  <polyline points="8 6 2 12 8 18"></polyline>
-                </svg>
-                <p class="wireframe-placeholder-text">[Project Visual / Wireframe Preview]</p>
+              <div class="portal-dest-title font-sans" id="portal-dest-title">CASE FILE</div>
+              <div class="portal-progress-track">
+                <div class="portal-progress-bar" id="portal-progress-bar"></div>
               </div>
-              <div class="card-body">
-                <h3 class="project-title">[Project Title 04]</h3>
-                <p class="project-desc">
-                  [1-2 line description highlighting architectural complexity, latency reduction, and system scale.]
-                </p>
-                <div class="project-tags" aria-label="Technologies used">
-                  <span class="tech-tag">[CLI Tools]</span>
-                  <span class="tech-tag">[Node.js]</span>
-                  <span class="tech-tag">[Docker]</span>
+              <div class="portal-hud-footer">
+                <span class="portal-route-code" id="portal-route-code">HTTP 200 // /projects/markowitz</span>
+                <span class="portal-hint">PREPARING CASE FILE SPECIFICATION</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dedicated Project Case Studies Overlay Container -->
+          <div class="project-case-overlay" id="project-case-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Dedicated Project Case File">
+            <div class="case-overlay-backdrop" id="case-overlay-backdrop"></div>
+            
+            <div class="case-overlay-viewport">
+              <!-- Top Sticky Action Bar -->
+              <div class="case-top-bar font-mono">
+                <button type="button" class="btn-back-to-projects" id="btn-top-back" aria-label="Return to Projects Grid">
+                  <span class="back-arrow">←</span>
+                  <span class="back-text">BACK TO PORTFOLIO</span>
+                  <span class="back-shortcut">[ESC]</span>
+                </button>
+                <div class="case-breadcrumb-nav font-mono" id="case-breadcrumb-nav" aria-label="Route Breadcrumbs">
+                  <span class="crumb-dim">portfolio</span>
+                  <span class="crumb-sep">/</span>
+                  <span class="crumb-dim">projects</span>
+                  <span class="crumb-sep">/</span>
+                  <span class="crumb-highlight" id="case-top-crumb">Markowitz</span>
+                </div>
+                <div class="case-status-indicator">
+                  <span class="status-pulse"></span>
+                  <span class="status-text" id="case-active-status">CASE_FILE // LIVE</span>
                 </div>
               </div>
-              <div class="card-actions">
-                <a href="#" class="project-link" id="project-4-github" aria-label="View source code on GitHub">
-                  <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                  </svg>
-                  <span>[GitHub]</span>
-                </a>
-                <a href="#" class="project-link project-link-accent" id="project-4-demo" aria-label="Open live demo">
-                  <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                    <polyline points="15 3 21 3 21 9"></polyline>
-                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                  </svg>
-                  <span>[Live Demo ↗]</span>
-                </a>
+
+              <!-- Case File Dynamic Content Container -->
+              <div class="case-file-content" id="case-file-content">
+                <!-- Case study dynamic view populated by script.js -->
               </div>
-            </article>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- ==================================================================
-           6. EDUCATION & EXPERIENCE SECTION (INTERACTIVE ZIG-ZAG PATH & SECONDARY BRANCH CONDUITS)
+           6. EDUCATION & EXPERIENCE SECTION (INTERACTIVE 4-NODE ZIG-ZAG JOURNEY)
            ================================================================== -->
       <section class="section trajectory-section" id="experience">
         <div class="container">
@@ -1325,40 +1505,40 @@
               <span class="tag-slash">/</span>
               <span class="tag-label">EDUCATION &amp; EXPERIENCE</span>
             </div>
-            <h2 class="section-title page-lead-title font-sans" id="experience-heading">EDUCATION</h2>
+            <h2 class="section-title page-lead-title font-sans" id="experience-heading">EDUCATION &amp; EXPERIENCE</h2>
             <p class="section-desc text-secondary">
-              Interactive progression matrix linked through a cybernetic zig-zag conduit. Click any milestone node to know more about in-depth achievements, system scaling, and academic excellence.
+              An interactive 4-stage progression across high school foundations, competitive milestones, engineering discipline, and collegiate leadership. Click any stage to explore in-depth achievements.
             </p>
           </div>
 
-          <!-- Interactive Trajectory HUD Controller -->
+          <!-- Interactive Stage HUD Controller -->
           <div class="trajectory-hud font-mono reveal" id="trajectory-hud">
             <div class="hud-left-status">
               <span class="hud-status-indicator"></span>
-              <span class="hud-status-text">ZIG_ZAG_CONDUIT // 4 NODES ONLINE</span>
+              <span class="hud-status-text">ZIGZAG_JOURNEY // 4 STAGES ONLINE</span>
             </div>
-            <div class="hud-node-tabs" role="tablist" aria-label="Progression Nodes Navigation">
+            <div class="hud-node-tabs" role="tablist" aria-label="Education and Experience Stages Navigation">
               <button class="hud-node-tab" data-node="1" role="tab" aria-selected="false" id="tab-node-1">
                 <span class="tab-index">01</span>
-                <span class="tab-label">LEAD SYSTEMS</span>
+                <span class="tab-label">DISCOVER</span>
               </button>
               <button class="hud-node-tab" data-node="2" role="tab" aria-selected="false" id="tab-node-2">
                 <span class="tab-index">02</span>
-                <span class="tab-label">FULL-STACK</span>
+                <span class="tab-label">PURSUE</span>
               </button>
               <button class="hud-node-tab" data-node="3" role="tab" aria-selected="false" id="tab-node-3">
                 <span class="tab-index">03</span>
-                <span class="tab-label">AI RESEARCH</span>
+                <span class="tab-label">BUILD</span>
               </button>
               <button class="hud-node-tab" data-node="4" role="tab" aria-selected="false" id="tab-node-4">
                 <span class="tab-index">04</span>
-                <span class="tab-label">ACADEMIC CORE</span>
+                <span class="tab-label">APPLY</span>
               </button>
             </div>
             <div class="hud-view-toggle">
-              <button type="button" class="btn-toggle-branches" id="btn-toggle-all-branches" title="Toggle expand/collapse all secondary paths">
+              <button type="button" class="btn-toggle-branches" id="btn-toggle-all-branches" title="Toggle expand or collapse all journey nodes">
                 <span class="toggle-icon">⚡</span>
-                <span class="toggle-text" id="toggle-branches-label">EXPAND ALL BRANCHES</span>
+                <span class="toggle-text" id="toggle-branches-label">EXPAND ALL STAGES</span>
               </button>
             </div>
           </div>
@@ -1366,15 +1546,15 @@
           <!-- Main Zig-Zag Interactive Stage -->
           <div class="zigzag-stage" id="zigzag-stage">
             
-            <!-- Dynamic SVG Zig-Zag Visual Conduit Track -->
+            <!-- Dynamic Organic SVG Zig-Zag Visual Conduit Track -->
             <svg class="zigzag-svg-canvas" id="zigzag-svg-canvas" aria-hidden="true">
               <defs>
                 <linearGradient id="conduitGlowGrad" x1="0%" y1="0%" x2="0%" y2="100%">
                   <stop offset="0%" stop-color="#ff6b1a" stop-opacity="0.9" />
-                  <stop offset="50%" stop-color="#ff944d" stop-opacity="0.65" />
+                  <stop offset="50%" stop-color="#ff944d" stop-opacity="0.7" />
                   <stop offset="100%" stop-color="#ff6b1a" stop-opacity="0.9" />
                 </linearGradient>
-                <filter id="conduitGlow" x="-20%" y="-20%" width="140%" height="140%">
+                <filter id="conduitGlow" x="-30%" y="-30%" width="160%" height="160%">
                   <feGaussianBlur stdDeviation="3.5" result="blur" />
                   <feMerge>
                     <feMergeNode in="blur" />
@@ -1382,19 +1562,22 @@
                   </feMerge>
                 </filter>
               </defs>
-              <!-- Base Inactive Circuit Guide -->
+              <!-- Base Guide Track with Sharp Miter Turns -->
               <path class="zigzag-guide-track" id="zigzag-guide-track" d="" />
-              <!-- Animated Glowing Active Conduit Line -->
+              <!-- Progressive Scroll-Revealed Glowing Track -->
               <path class="zigzag-active-track" id="zigzag-active-track" d="" filter="url(#conduitGlow)" />
+              <!-- Sharp Acute Vertex Markers Group -->
+              <g class="zigzag-vertices-group" id="zigzag-vertices-group"></g>
+              <!-- Animated Orange Energy Pulse -->
+              <circle class="zigzag-pulse-dot" id="zigzag-pulse-dot" r="5.5" fill="#ff6b1a" filter="url(#conduitGlow)" style="display: none;" />
             </svg>
 
             <!-- 4 NODES IN ZIG-ZAG ALTERNATING ARRANGEMENT -->
 
-            <!-- ==================== NODE 01 (Left Side) ==================== -->
+            <!-- ==================== NODE 01: HIGH SCHOOL (Left Side) ==================== -->
             <div class="zigzag-node-row node-row-left" id="node-row-1" data-node-id="1">
-              <!-- Primary Milestone Node -->
-              <article class="zigzag-node-card reveal" id="node-card-1" tabindex="0" role="region" aria-label="Milestone 1: Lead Systems Software Engineer">
-                <!-- Glowing Node Beacon -->
+              <article class="zigzag-node-card reveal" id="node-card-1" tabindex="0" role="region" aria-label="Stage 01: Discover — High School at Euro School Airoli">
+                <!-- Anchor Beacon -->
                 <div class="node-anchor-beacon" aria-hidden="true">
                   <div class="beacon-halo"></div>
                   <div class="beacon-ring ring-outer"></div>
@@ -1406,150 +1589,105 @@
                 </div>
 
                 <div class="node-card-inner">
+                  <!-- Compact Node Bar -->
                   <div class="node-meta-bar font-mono">
-                    <span class="node-code-tag">NODE_01 // SYSTEM_CORE</span>
-                    <time class="node-date-badge">2024 — PRESENT</time>
+                    <span class="node-code-tag">01 — DISCOVER</span>
+                    <span class="node-stage-tag font-mono">FOUNDATION</span>
                   </div>
                   
                   <div class="node-heading-group">
-                    <h3 class="node-title">Lead / Senior Systems Software Engineer</h3>
+                    <h3 class="node-title">HIGH SCHOOL</h3>
                     <div class="node-org-line font-mono">
-                      <span class="org-name">Scale Infrastructure &amp; Cloud Platform</span>
-                      <span class="org-status-chip">ACTIVE_ROLE</span>
+                      <span class="org-name">Euro School Airoli</span>
                     </div>
                   </div>
 
-                  <p class="node-desc">
-                    Spearheading high-throughput microservices architecture, distributed caches, and fault-tolerant Kubernetes cloud platforms delivering five-nines availability across high-volume production clusters.
+                  <!-- Short 1-line description -->
+                  <p class="node-quote">
+                    “Where curiosity became competition.”
                   </p>
 
-                  <div class="node-telemetry-row font-mono">
-                    <span class="telemetry-pill"><strong>REQ/S:</strong> 50,000+</span>
-                    <span class="telemetry-pill"><strong>LATENCY:</strong> p99 &lt; 12ms</span>
-                    <span class="telemetry-pill"><strong>SLA:</strong> 99.999%</span>
+                  <!-- Important achievement/statistic -->
+                  <div class="node-compact-metric-row font-mono">
+                    <span class="node-stat-pill">
+                      <strong>96%</strong> • Sports &amp; Certifications
+                    </span>
                   </div>
 
-                  <div class="node-card-footer">
-                    <button type="button" class="btn-branch-trigger font-mono" id="btn-branch-1" aria-expanded="false" aria-controls="branch-path-1">
-                      <span class="branch-btn-icon">⚡</span>
-                      <span class="branch-btn-text">CLICK TO KNOW MORE</span>
-                      <span class="branch-btn-count">[4 SUB-NODES]</span>
-                      <span class="branch-btn-chevron">▾</span>
-                    </button>
+                  <!-- Expansion Trigger CTA -->
+                  <div class="node-card-footer font-mono">
+                    <div class="node-cta-button">
+                      <span class="cta-icon">⚡</span>
+                      <span class="cta-text">EXPLORE STAGE DETAILS</span>
+                      <span class="cta-chevron">▾</span>
+                    </div>
                   </div>
+
+                  <!-- In-Place Unfolding Details Container -->
+                  <div class="node-unfold-container" id="unfold-1" aria-label="High School expanded details">
+                    <div class="unfold-inner-content">
+                      <div class="unfold-divider"></div>
+
+                      <div class="unfold-grid two-col">
+                        <!-- Left Column: Academics & Sports -->
+                        <div class="unfold-col">
+                          <div class="unfold-subgroup">
+                            <span class="unfold-section-label font-mono">ACADEMICS</span>
+                            <div class="unfold-stat-box">
+                              <span class="unfold-stat-number font-mono">96%</span>
+                              <span class="unfold-stat-desc font-mono">in Class X</span>
+                            </div>
+                          </div>
+
+                          <div class="unfold-subgroup mt-sm">
+                            <span class="unfold-section-label font-mono">SPORTS</span>
+                            <ul class="unfold-detail-list font-mono">
+                              <li class="unfold-list-item">
+                                <span class="bullet-indicator"></span>
+                                <span>DSO Volleyball</span>
+                              </li>
+                              <li class="unfold-list-item">
+                                <span class="bullet-indicator"></span>
+                                <span>DSO Football</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+
+                        <!-- Right Column: Certifications -->
+                        <div class="unfold-col">
+                          <div class="unfold-subgroup">
+                            <span class="unfold-section-label font-mono">CERTIFICATIONS</span>
+                            <div class="cert-stack">
+                              <div class="cert-chip">
+                                <span class="cert-icon-prefix">🛡</span>
+                                <div class="cert-info">
+                                  <span class="cert-name font-mono">Ethical Hacking</span>
+                                  <span class="cert-desc">Security fundamentals &amp; network scanning</span>
+                                </div>
+                              </div>
+                              <div class="cert-chip">
+                                <span class="cert-icon-prefix">📊</span>
+                                <div class="cert-info">
+                                  <span class="cert-name font-mono">Microsoft Excel</span>
+                                  <span class="cert-desc">Advanced formulas &amp; data modeling</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
               </article>
-
-              <!-- Secondary Branch Path for Node 1: In-depth Achievements & Work -->
-              <div class="secondary-branch-container" id="branch-path-1" aria-label="Secondary Path: Achievements in Lead Systems Role">
-                <div class="branch-conduit-header font-mono">
-                  <div class="branch-track-indicator">
-                    <span class="track-pulse-dot"></span>
-                    <span class="track-line-tag">BRANCH_01 // WORK &amp; ACHIEVEMENTS CONDUIT</span>
-                  </div>
-                  <span class="branch-count-badge">4 SUB-NODES CONNECTED</span>
-                </div>
-
-                <!-- Secondary Path Sub-nodes Grid -->
-                <div class="branch-subnodes-stream">
-                  <!-- Sub-node 1.1 -->
-                  <div class="branch-subnode-card" id="subnode-1-1">
-                    <div class="subnode-connector font-mono">
-                      <span class="subnode-idx">[01.1]</span>
-                      <span class="subnode-wire"></span>
-                    </div>
-                    <div class="subnode-content">
-                      <div class="subnode-header">
-                        <h4 class="subnode-title">High-Throughput Ingestion Engine</h4>
-                        <span class="subnode-metric-badge font-mono">-38% CPU // 50K REQ/S</span>
-                      </div>
-                      <p class="subnode-desc">
-                        Re-architected event stream processing pipeline in Go utilizing zero-copy memory buffers and batch compression, scaling ingress to 50,000 req/sec while lowering cluster compute overhead.
-                      </p>
-                      <div class="subnode-tags font-mono">
-                        <span class="subnode-tag">Go</span>
-                        <span class="subnode-tag">Apache Kafka</span>
-                        <span class="subnode-tag">gRPC</span>
-                        <span class="subnode-tag">Memory Pools</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Sub-node 1.2 -->
-                  <div class="branch-subnode-card" id="subnode-1-2">
-                    <div class="subnode-connector font-mono">
-                      <span class="subnode-idx">[01.2]</span>
-                      <span class="subnode-wire"></span>
-                    </div>
-                    <div class="subnode-content">
-                      <div class="subnode-header">
-                        <h4 class="subnode-title">Tiered Distributed Cache &amp; Latency Compression</h4>
-                        <span class="subnode-metric-badge font-mono">85MS ➔ 11.4MS p99</span>
-                      </div>
-                      <p class="subnode-desc">
-                        Designed multi-region Redis cluster with deterministic invalidation locks and write-behind cache tiers, slashing p99 database query latency from 85ms to 11.4ms.
-                      </p>
-                      <div class="subnode-tags font-mono">
-                        <span class="subnode-tag">Redis Cluster</span>
-                        <span class="subnode-tag">Envoy Proxy</span>
-                        <span class="subnode-tag">Distributed Locks</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Sub-node 1.3 -->
-                  <div class="branch-subnode-card" id="subnode-1-3">
-                    <div class="subnode-connector font-mono">
-                      <span class="subnode-idx">[01.3]</span>
-                      <span class="subnode-wire"></span>
-                    </div>
-                    <div class="subnode-content">
-                      <div class="subnode-header">
-                        <h4 class="subnode-title">Autonomous GitOps CI/CD &amp; Zero-Downtime Rollouts</h4>
-                        <span class="subnode-metric-badge font-mono">0.02% FAILURE RATE</span>
-                      </div>
-                      <p class="subnode-desc">
-                        Automated blue/green canary deployments on Kubernetes with real-time Prometheus telemetry rollbacks, enabling daily production updates with zero downtime.
-                      </p>
-                      <div class="subnode-tags font-mono">
-                        <span class="subnode-tag">Kubernetes</span>
-                        <span class="subnode-tag">Terraform</span>
-                        <span class="subnode-tag">ArgoCD</span>
-                        <span class="subnode-tag">Prometheus</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Sub-node 1.4 -->
-                  <div class="branch-subnode-card" id="subnode-1-4">
-                    <div class="subnode-connector font-mono">
-                      <span class="subnode-idx">[01.4]</span>
-                      <span class="subnode-wire"></span>
-                    </div>
-                    <div class="subnode-content">
-                      <div class="subnode-header">
-                        <h4 class="subnode-title">Engineering RFC Governance &amp; Multi-Squad Mentorship</h4>
-                        <span class="subnode-metric-badge font-mono">4 TEAMS UNIFIED</span>
-                      </div>
-                      <p class="subnode-desc">
-                        Authored platform architecture RFC standards, mentored 8 mid-level engineers, and standardized contract-first API schema validation company-wide.
-                      </p>
-                      <div class="subnode-tags font-mono">
-                        <span class="subnode-tag">Architecture RFCs</span>
-                        <span class="subnode-tag">OpenAPI 3.0</span>
-                        <span class="subnode-tag">Mentorship</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
 
-            <!-- ==================== NODE 02 (Right Side) ==================== -->
+            <!-- ==================== NODE 02: JUNIOR COLLEGE (Right Side) ==================== -->
             <div class="zigzag-node-row node-row-right" id="node-row-2" data-node-id="2">
-              <!-- Primary Milestone Node -->
-              <article class="zigzag-node-card reveal" id="node-card-2" tabindex="0" role="region" aria-label="Milestone 2: Full-Stack and Distributed Applications Engineer">
-                <!-- Glowing Node Beacon -->
+              <article class="zigzag-node-card reveal" id="node-card-2" tabindex="0" role="region" aria-label="Stage 02: Pursue — Junior College at IDUBS & IITians Spectrum">
+                <!-- Anchor Beacon -->
                 <div class="node-anchor-beacon" aria-hidden="true">
                   <div class="beacon-halo"></div>
                   <div class="beacon-ring ring-outer"></div>
@@ -1562,151 +1700,132 @@
 
                 <div class="node-card-inner">
                   <div class="node-meta-bar font-mono">
-                    <span class="node-code-tag">NODE_02 // FULL_STACK</span>
-                    <time class="node-date-badge">2022 — 2024</time>
+                    <span class="node-code-tag">02 — PURSUE</span>
+                    <span class="node-stage-tag font-mono">COMPETITIVE EXAMS</span>
                   </div>
                   
                   <div class="node-heading-group">
-                    <h3 class="node-title">Full-Stack &amp; Distributed Applications Engineer</h3>
+                    <h3 class="node-title">JUNIOR COLLEGE</h3>
                     <div class="node-org-line font-mono">
-                      <span class="org-name">NextGen Digital Platforms</span>
-                      <span class="org-status-chip">PRODUCTION</span>
+                      <span class="org-name">12th — IDUBS Junior College</span>
+                      <span class="org-sep">•</span>
+                      <span class="org-name">JEE Preparation — IITians Spectrum</span>
                     </div>
                   </div>
 
-                  <p class="node-desc">
-                    Engineered resilient event-driven microservices, bidirectional WebSocket streaming gateways, and high-performance client dashboards servicing over 2 million daily user interactions.
+                  <p class="node-quote">
+                    “The journey into engineering began here.”
                   </p>
 
-                  <div class="node-telemetry-row font-mono">
-                    <span class="telemetry-pill"><strong>EVENTS:</strong> 10M+ Daily</span>
-                    <span class="telemetry-pill"><strong>SERVICES:</strong> 12 Microservices</span>
-                    <span class="telemetry-pill"><strong>UI:</strong> 60 FPS Telemetry</span>
+                  <div class="node-compact-metric-row font-mono">
+                    <span class="node-stat-pill">
+                      <strong>84%</strong> • <strong>94%ile</strong> JEE Mains
+                    </span>
                   </div>
 
-                  <div class="node-card-footer">
-                    <button type="button" class="btn-branch-trigger font-mono" id="btn-branch-2" aria-expanded="false" aria-controls="branch-path-2">
-                      <span class="branch-btn-icon">⚡</span>
-                      <span class="branch-btn-text">CLICK TO KNOW MORE</span>
-                      <span class="branch-btn-count">[4 SUB-NODES]</span>
-                      <span class="branch-btn-chevron">▾</span>
-                    </button>
+                  <div class="node-card-footer font-mono">
+                    <div class="node-cta-button">
+                      <span class="cta-icon">⚡</span>
+                      <span class="cta-text">EXPLORE STAGE DETAILS</span>
+                      <span class="cta-chevron">▾</span>
+                    </div>
                   </div>
+
+                  <!-- In-Place Unfolding Details Container -->
+                  <div class="node-unfold-container" id="unfold-2" aria-label="Junior College expanded details">
+                    <div class="unfold-inner-content">
+                      <div class="unfold-divider"></div>
+
+                      <!-- Competitive Exams Animated Statistics (Animated individually) -->
+                      <div class="unfold-subgroup">
+                        <div class="subgroup-header-row font-mono">
+                          <span class="unfold-section-label">COMPETITIVE EXAMS</span>
+                          <span class="subgroup-aux-badge">ANIMATED METRICS</span>
+                        </div>
+
+                        <div class="competitive-stats-container">
+                          <!-- Metric 1: JEE Mains -->
+                          <div class="comp-stat-card" data-stat-index="1">
+                            <span class="comp-stat-title font-mono">JEE MAINS</span>
+                            <div class="comp-stat-val font-mono" id="stat-jee-mains">
+                              <span class="counter-val" data-target="94" data-mode="int">94</span><span class="counter-unit"> Percentile</span>
+                            </div>
+                            <div class="comp-stat-bar-track">
+                              <div class="comp-stat-bar-fill" style="width: 94%;"></div>
+                            </div>
+                            <span class="comp-stat-note font-mono">National Percentile</span>
+                          </div>
+
+                          <!-- Metric 2: JEE Advanced -->
+                          <div class="comp-stat-card" data-stat-index="2">
+                            <span class="comp-stat-title font-mono">JEE ADVANCED</span>
+                            <div class="comp-stat-val font-mono" id="stat-jee-adv">
+                              <span class="counter-prefix">AIR </span><span class="counter-val" data-target="25730" data-mode="rank">25,730</span>
+                            </div>
+                            <div class="comp-stat-bar-track">
+                              <div class="comp-stat-bar-fill" style="width: 82%;"></div>
+                            </div>
+                            <span class="comp-stat-note font-mono">All India Rank</span>
+                          </div>
+
+                          <!-- Metric 3: MHT-CET -->
+                          <div class="comp-stat-card" data-stat-index="3">
+                            <span class="comp-stat-title font-mono">MHT-CET</span>
+                            <div class="comp-stat-val font-mono" id="stat-mht-cet">
+                              <span class="counter-val" data-target="97.8" data-mode="float">97.8</span><span class="counter-unit"> Percentile</span>
+                            </div>
+                            <div class="comp-stat-bar-track">
+                              <div class="comp-stat-bar-fill" style="width: 97.8%;"></div>
+                            </div>
+                            <span class="comp-stat-note font-mono">State Percentile</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="unfold-grid two-col mt-md">
+                        <!-- Academics -->
+                        <div class="unfold-col">
+                          <span class="unfold-section-label font-mono">ACADEMICS</span>
+                          <div class="unfold-stat-box">
+                            <span class="unfold-stat-number font-mono">84%</span>
+                            <span class="unfold-stat-desc font-mono">in Class XII (HSC Board)</span>
+                          </div>
+                        </div>
+
+                        <!-- Certifications -->
+                        <div class="unfold-col">
+                          <span class="unfold-section-label font-mono">CERTIFICATIONS</span>
+                          <div class="cert-stack">
+                            <div class="cert-chip">
+                              <span class="cert-icon-prefix">⚙️</span>
+                              <div class="cert-info">
+                                <span class="cert-name font-mono">Prompt Engineering</span>
+                                <span class="cert-desc">Context framing, few-shot prompting &amp; LLM heuristics</span>
+                              </div>
+                            </div>
+                            <div class="cert-chip">
+                              <span class="cert-icon-prefix">🧠</span>
+                              <div class="cert-info">
+                                <span class="cert-name font-mono">Generative AI</span>
+                                <span class="cert-desc">Transformer architectures &amp; generative workflows</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
                 </div>
               </article>
-
-              <!-- Secondary Branch Path for Node 2: In-depth Achievements & Work -->
-              <div class="secondary-branch-container" id="branch-path-2" aria-label="Secondary Path: Achievements in Full-Stack Role">
-                <div class="branch-conduit-header font-mono">
-                  <div class="branch-track-indicator">
-                    <span class="track-pulse-dot"></span>
-                    <span class="track-line-tag">BRANCH_02 // WORK &amp; ACHIEVEMENTS CONDUIT</span>
-                  </div>
-                  <span class="branch-count-badge">4 SUB-NODES CONNECTED</span>
-                </div>
-
-                <!-- Secondary Path Sub-nodes Grid -->
-                <div class="branch-subnodes-stream">
-                  <!-- Sub-node 2.1 -->
-                  <div class="branch-subnode-card" id="subnode-2-1">
-                    <div class="subnode-connector font-mono">
-                      <span class="subnode-idx">[02.1]</span>
-                      <span class="subnode-wire"></span>
-                    </div>
-                    <div class="subnode-content">
-                      <div class="subnode-header">
-                        <h4 class="subnode-title">Real-Time Telemetry &amp; WebSocket Engine</h4>
-                        <span class="subnode-metric-badge font-mono">80K CONCURRENT CLIENTS</span>
-                      </div>
-                      <p class="subnode-desc">
-                        Built bidirectional WebSocket streaming gateway with backpressure handling and automated reconnect state machines powering real-time financial tracking.
-                      </p>
-                      <div class="subnode-tags font-mono">
-                        <span class="subnode-tag">TypeScript</span>
-                        <span class="subnode-tag">Node.js</span>
-                        <span class="subnode-tag">WebSockets</span>
-                        <span class="subnode-tag">RxJS</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Sub-node 2.2 -->
-                  <div class="branch-subnode-card" id="subnode-2-2">
-                    <div class="subnode-connector font-mono">
-                      <span class="subnode-idx">[02.2]</span>
-                      <span class="subnode-wire"></span>
-                    </div>
-                    <div class="subnode-content">
-                      <div class="subnode-header">
-                        <h4 class="subnode-title">Distributed Microservices Decoupling</h4>
-                        <span class="subnode-metric-badge font-mono">-45% PAYLOAD OVERHEAD</span>
-                      </div>
-                      <p class="subnode-desc">
-                        Decomposed legacy backend into 12 containerized microservices using Docker and RabbitMQ event queues, decreasing cross-service payload serialization latency by 45%.
-                      </p>
-                      <div class="subnode-tags font-mono">
-                        <span class="subnode-tag">Docker</span>
-                        <span class="subnode-tag">RabbitMQ</span>
-                        <span class="subnode-tag">PostgreSQL</span>
-                        <span class="subnode-tag">REST APIs</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Sub-node 2.3 -->
-                  <div class="branch-subnode-card" id="subnode-2-3">
-                    <div class="subnode-connector font-mono">
-                      <span class="subnode-idx">[02.3]</span>
-                      <span class="subnode-wire"></span>
-                    </div>
-                    <div class="subnode-content">
-                      <div class="subnode-header">
-                        <h4 class="subnode-title">Database Query &amp; Index Optimization</h4>
-                        <span class="subnode-metric-badge font-mono">-70% LOCK CONTENTION</span>
-                      </div>
-                      <p class="subnode-desc">
-                        Audited query execution plans on PostgreSQL, restructuring composite B-Tree indexes and query joins to reduce transaction lock contention under heavy traffic.
-                      </p>
-                      <div class="subnode-tags font-mono">
-                        <span class="subnode-tag">PostgreSQL</span>
-                        <span class="subnode-tag">SQL EXPLAIN</span>
-                        <span class="subnode-tag">PgBouncer</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Sub-node 2.4 -->
-                  <div class="branch-subnode-card" id="subnode-2-4">
-                    <div class="subnode-connector font-mono">
-                      <span class="subnode-idx">[02.4]</span>
-                      <span class="subnode-wire"></span>
-                    </div>
-                    <div class="subnode-content">
-                      <div class="subnode-header">
-                        <h4 class="subnode-title">Accessible Component System &amp; Core Design Tokens</h4>
-                        <span class="subnode-metric-badge font-mono">+30% SPRINT VELOCITY</span>
-                      </div>
-                      <p class="subnode-desc">
-                        Created modular UI design system strictly conforming to WCAG AA accessibility, expediting engineering feature velocity and ensuring unified brand cohesion.
-                      </p>
-                      <div class="subnode-tags font-mono">
-                        <span class="subnode-tag">React</span>
-                        <span class="subnode-tag">Tailwind CSS</span>
-                        <span class="subnode-tag">Radix UI</span>
-                        <span class="subnode-tag">Storybook</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
 
-            <!-- ==================== NODE 03 (Left Side) ==================== -->
-            <div class="zigzag-node-row node-row-left" id="node-row-3" data-node-id="3">
-              <!-- Primary Milestone Node -->
-              <article class="zigzag-node-card reveal" id="node-card-3" tabindex="0" role="region" aria-label="Milestone 3: Systems Software Engineer and AI Research Fellow">
-                <!-- Glowing Node Beacon -->
-                <div class="node-anchor-beacon" aria-hidden="true">
+            <!-- ==================== NODE 03: ENGINEERING (Left Side - Visually Strongest) ==================== -->
+            <div class="zigzag-node-row node-row-left engineering-highlight-row" id="node-row-3" data-node-id="3">
+              <article class="zigzag-node-card engineering-node-card reveal" id="node-card-3" tabindex="0" role="region" aria-label="Stage 03: Build — Engineering at D. J. Sanghvi College of Engineering">
+                <!-- Anchor Beacon -->
+                <div class="node-anchor-beacon beacon-engineering" aria-hidden="true">
                   <div class="beacon-halo"></div>
                   <div class="beacon-ring ring-outer"></div>
                   <div class="beacon-ring ring-inner"></div>
@@ -1718,149 +1837,115 @@
 
                 <div class="node-card-inner">
                   <div class="node-meta-bar font-mono">
-                    <span class="node-code-tag">NODE_03 // AI_RESEARCH</span>
-                    <time class="node-date-badge">2020 — 2022</time>
+                    <div class="flagship-tag-wrapper">
+                      <span class="node-code-tag flagship-accent">03 — BUILD</span>
+                      <span class="flagship-crown-badge">★ FLAGSHIP EDUCATION</span>
+                    </div>
+                    <span class="node-stage-tag eng-badge font-mono">ACTIVE DEGREE</span>
                   </div>
                   
                   <div class="node-heading-group">
-                    <h3 class="node-title">Systems Software Engineer &amp; AI Research Fellow</h3>
+                    <h3 class="node-title engineering-title">ENGINEERING</h3>
                     <div class="node-org-line font-mono">
-                      <span class="org-name">Advanced Computing &amp; Applied AI Lab</span>
-                      <span class="org-status-chip">RESEARCH_CORE</span>
+                      <span class="org-name engineering-org-name">D. J. Sanghvi College of Engineering</span>
                     </div>
                   </div>
 
-                  <p class="node-desc">
-                    Conducted research into low-latency neural model inference, TensorRT quantization kernels, hardware-accelerated memory caches, and multi-GPU distributed data loaders.
+                  <p class="node-quote">
+                    “Building software, AI and quantitative finance.”
                   </p>
 
-                  <div class="node-telemetry-row font-mono">
-                    <span class="telemetry-pill"><strong>SPEEDUP:</strong> 2.4x Faster</span>
-                    <span class="telemetry-pill"><strong>HARDWARE:</strong> CUDA / TensorRT</span>
-                    <span class="telemetry-pill"><strong>ECOSYSTEM:</strong> Open Source</span>
+                  <div class="node-compact-metric-row font-mono">
+                    <span class="node-stat-pill flagship-pill">
+                      <strong class="text-orange">9 CGPA</strong> • <strong class="text-orange">2× Hackathon Winner</strong>
+                    </span>
                   </div>
 
-                  <div class="node-card-footer">
-                    <button type="button" class="btn-branch-trigger font-mono" id="btn-branch-3" aria-expanded="false" aria-controls="branch-path-3">
-                      <span class="branch-btn-icon">⚡</span>
-                      <span class="branch-btn-text">CLICK TO KNOW MORE</span>
-                      <span class="branch-btn-count">[4 SUB-NODES]</span>
-                      <span class="branch-btn-chevron">▾</span>
-                    </button>
+                  <div class="node-card-footer font-mono">
+                    <div class="node-cta-button">
+                      <span class="cta-icon">⚡</span>
+                      <span class="cta-text">EXPLORE STAGE DETAILS</span>
+                      <span class="cta-chevron">▾</span>
+                    </div>
                   </div>
+
+                  <!-- In-Place Unfolding Details Container -->
+                  <div class="node-unfold-container" id="unfold-3" aria-label="Engineering expanded details">
+                    <div class="unfold-inner-content">
+                      <div class="unfold-divider"></div>
+
+                      <!-- Engineering Highlights Bar -->
+                      <div class="engineering-stats-hero">
+                        <div class="eng-stat-hero-card">
+                          <span class="hero-stat-tag font-mono">ACADEMICS</span>
+                          <div class="hero-stat-value font-mono">9 CGPA</div>
+                          <span class="hero-stat-note font-mono">Consistent Distinction</span>
+                        </div>
+                        <div class="eng-stat-hero-card highlight-gold">
+                          <span class="hero-stat-tag font-mono">ACHIEVEMENTS</span>
+                          <div class="hero-stat-value font-mono">2× WINNER</div>
+                          <span class="hero-stat-note font-mono">Collegiate Hackathons</span>
+                        </div>
+                      </div>
+
+                      <!-- Current Focus Areas -->
+                      <div class="unfold-subgroup mt-md">
+                        <span class="unfold-section-label font-mono">CURRENT FOCUS</span>
+                        <div class="focus-pills-cluster font-mono">
+                          <div class="focus-chip">
+                            <span class="focus-indicator"></span>
+                            <span class="focus-title">Software Development</span>
+                          </div>
+                          <div class="focus-chip">
+                            <span class="focus-indicator"></span>
+                            <span class="focus-title">AI / ML</span>
+                          </div>
+                          <div class="focus-chip">
+                            <span class="focus-indicator"></span>
+                            <span class="focus-title">Quantitative Finance</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Certifications -->
+                      <div class="unfold-subgroup mt-md">
+                        <span class="unfold-section-label font-mono">CERTIFICATIONS</span>
+                        <div class="cert-stack">
+                          <div class="cert-chip engineering-cert">
+                            <span class="cert-icon-prefix">📈</span>
+                            <div class="cert-info">
+                              <span class="cert-name font-mono">World of Quantitative Finance</span>
+                              <span class="cert-desc">Stochastic calculus, derivative pricing &amp; portfolio risk</span>
+                            </div>
+                          </div>
+                          <div class="cert-chip engineering-cert">
+                            <span class="cert-icon-prefix">☁️</span>
+                            <div class="cert-info">
+                              <span class="cert-name font-mono">Engineering AI Agents with Google Cloud</span>
+                              <span class="cert-desc">Multi-agent architectures, Vertex AI &amp; tool orchestration</span>
+                            </div>
+                          </div>
+                          <div class="cert-chip engineering-cert">
+                            <span class="cert-icon-prefix">🐍</span>
+                            <div class="cert-info">
+                              <span class="cert-name font-mono">Advanced Python</span>
+                              <span class="cert-desc">Metaprogramming, concurrency, memory profiling &amp; C-extensions</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
                 </div>
               </article>
-
-              <!-- Secondary Branch Path for Node 3: In-depth Achievements & Work -->
-              <div class="secondary-branch-container" id="branch-path-3" aria-label="Secondary Path: Achievements in AI Research Role">
-                <div class="branch-conduit-header font-mono">
-                  <div class="branch-track-indicator">
-                    <span class="track-pulse-dot"></span>
-                    <span class="track-line-tag">BRANCH_03 // WORK &amp; ACHIEVEMENTS CONDUIT</span>
-                  </div>
-                  <span class="branch-count-badge">4 SUB-NODES CONNECTED</span>
-                </div>
-
-                <!-- Secondary Path Sub-nodes Grid -->
-                <div class="branch-subnodes-stream">
-                  <!-- Sub-node 3.1 -->
-                  <div class="branch-subnode-card" id="subnode-3-1">
-                    <div class="subnode-connector font-mono">
-                      <span class="subnode-idx">[03.1]</span>
-                      <span class="subnode-wire"></span>
-                    </div>
-                    <div class="subnode-content">
-                      <div class="subnode-header">
-                        <h4 class="subnode-title">TensorRT &amp; INT8 Quantization Kernels</h4>
-                        <span class="subnode-metric-badge font-mono">2.4X SPEEDUP // 99.4% ACCURACY</span>
-                      </div>
-                      <p class="subnode-desc">
-                        Optimized edge transformer inference latency by 2.4x utilizing INT8 post-training quantization and custom TensorRT CUDA execution graphs without loss of model accuracy.
-                      </p>
-                      <div class="subnode-tags font-mono">
-                        <span class="subnode-tag">C++</span>
-                        <span class="subnode-tag">CUDA</span>
-                        <span class="subnode-tag">TensorRT</span>
-                        <span class="subnode-tag">Python</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Sub-node 3.2 -->
-                  <div class="branch-subnode-card" id="subnode-3-2">
-                    <div class="subnode-connector font-mono">
-                      <span class="subnode-idx">[03.2]</span>
-                      <span class="subnode-wire"></span>
-                    </div>
-                    <div class="subnode-content">
-                      <div class="subnode-header">
-                        <h4 class="subnode-title">High-Throughput Multi-GPU Data Pipeline</h4>
-                        <span class="subnode-metric-badge font-mono">61% ➔ 94% GPU COMPUTE UTIL</span>
-                      </div>
-                      <p class="subnode-desc">
-                        Built asynchronous zero-copy data loading workers that eliminated CPU bottle-necks during distributed training, maximizing GPU hardware saturation across compute clusters.
-                      </p>
-                      <div class="subnode-tags font-mono">
-                        <span class="subnode-tag">PyTorch DDP</span>
-                        <span class="subnode-tag">NVLink</span>
-                        <span class="subnode-tag">Shared Memory</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Sub-node 3.3 -->
-                  <div class="branch-subnode-card" id="subnode-3-3">
-                    <div class="subnode-connector font-mono">
-                      <span class="subnode-idx">[03.3]</span>
-                      <span class="subnode-wire"></span>
-                    </div>
-                    <div class="subnode-content">
-                      <div class="subnode-header">
-                        <h4 class="subnode-title">Automated Algorithmic Benchmarking CLI</h4>
-                        <span class="subnode-metric-badge font-mono">25+ RESEARCHERS DEPLOYED</span>
-                      </div>
-                      <p class="subnode-desc">
-                        Developed an open-source latency and memory profiling CLI tool that automatically traces kernel cache misses and memory allocations during neural forward passes.
-                      </p>
-                      <div class="subnode-tags font-mono">
-                        <span class="subnode-tag">Python CLI</span>
-                        <span class="subnode-tag">Valgrind</span>
-                        <span class="subnode-tag">Perf</span>
-                        <span class="subnode-tag">Linux</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Sub-node 3.4 -->
-                  <div class="branch-subnode-card" id="subnode-3-4">
-                    <div class="subnode-connector font-mono">
-                      <span class="subnode-idx">[03.4]</span>
-                      <span class="subnode-wire"></span>
-                    </div>
-                    <div class="subnode-content">
-                      <div class="subnode-header">
-                        <h4 class="subnode-title">Academic Publication on Distributed Neural Latency</h4>
-                        <span class="subnode-metric-badge font-mono">PEER-REVIEWED PUBLICATION</span>
-                      </div>
-                      <p class="subnode-desc">
-                        Co-authored research paper examining latency bounds and memory overhead in distributed edge neural accelerators, presented at regional computer engineering symposium.
-                      </p>
-                      <div class="subnode-tags font-mono">
-                        <span class="subnode-tag">Academic Research</span>
-                        <span class="subnode-tag">Peer Reviewed</span>
-                        <span class="subnode-tag">Symposium</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
 
-            <!-- ==================== NODE 04 (Right Side) ==================== -->
+            <!-- ==================== NODE 04: EXPERIENCE (Right Side - 4 Experiences with Staggered Animation) ==================== -->
             <div class="zigzag-node-row node-row-right" id="node-row-4" data-node-id="4">
-              <!-- Primary Milestone Node -->
-              <article class="zigzag-node-card reveal" id="node-card-4" tabindex="0" role="region" aria-label="Milestone 4: B.S. in Computer Science and Engineering">
-                <!-- Glowing Node Beacon -->
+              <article class="zigzag-node-card reveal" id="node-card-4" tabindex="0" role="region" aria-label="Stage 04: Apply — Experience across Committees">
+                <!-- Anchor Beacon -->
                 <div class="node-anchor-beacon" aria-hidden="true">
                   <div class="beacon-halo"></div>
                   <div class="beacon-ring ring-outer"></div>
@@ -1873,144 +1958,112 @@
 
                 <div class="node-card-inner">
                   <div class="node-meta-bar font-mono">
-                    <span class="node-code-tag">NODE_04 // ACADEMIC_CORE</span>
-                    <time class="node-date-badge">2016 — 2020</time>
+                    <span class="node-code-tag">04 — APPLY</span>
+                    <span class="node-stage-tag font-mono">LEADERSHIP &amp; IMPACT</span>
                   </div>
                   
                   <div class="node-heading-group">
-                    <h3 class="node-title">B.S. in Computer Science &amp; Engineering</h3>
+                    <h3 class="node-title">EXPERIENCE</h3>
                     <div class="node-org-line font-mono">
-                      <span class="org-name">University Institute of Engineering &amp; Technology</span>
-                      <span class="org-status-chip">HIGHEST_DISTINCTION</span>
+                      <span class="org-name">Technical, Cultural &amp; Marketing Committees</span>
                     </div>
                   </div>
 
-                  <p class="node-desc">
-                    Graduated with High Honors (Top 2% of engineering graduating class). Rigorous coursework and project leadership across Operating Systems, Distributed Systems, Compilers, and Algorithmic Complexity.
+                  <p class="node-quote">
+                    “Learning beyond the classroom.”
                   </p>
 
-                  <div class="node-telemetry-row font-mono">
-                    <span class="telemetry-pill"><strong>HONORS:</strong> GPA 3.9 / 4.0</span>
-                    <span class="telemetry-pill"><strong>RANK:</strong> Top 2% Class</span>
-                    <span class="telemetry-pill"><strong>AWARDS:</strong> 1st Place Capstone</span>
+                  <div class="node-compact-metric-row font-mono">
+                    <span class="node-stat-pill">
+                      DJS Antariksh • DJS Dhadak • DJS eXpress • DJS Compute
+                    </span>
                   </div>
 
-                  <div class="node-card-footer">
-                    <button type="button" class="btn-branch-trigger font-mono" id="btn-branch-4" aria-expanded="false" aria-controls="branch-path-4">
-                      <span class="branch-btn-icon">⚡</span>
-                      <span class="branch-btn-text">CLICK TO KNOW MORE</span>
-                      <span class="branch-btn-count">[4 SUB-NODES]</span>
-                      <span class="branch-btn-chevron">▾</span>
-                    </button>
+                  <div class="node-card-footer font-mono">
+                    <div class="node-cta-button">
+                      <span class="cta-icon">⚡</span>
+                      <span class="cta-text">EXPLORE STAGE DETAILS</span>
+                      <span class="cta-chevron">▾</span>
+                    </div>
                   </div>
+
+                  <!-- In-Place Unfolding Details Container -->
+                  <div class="node-unfold-container" id="unfold-4" aria-label="Experience expanded details">
+                    <div class="unfold-inner-content">
+                      <div class="unfold-divider"></div>
+
+                      <div class="experience-staggered-stream">
+                        
+                        <!-- 1. DJS Antariksh -->
+                        <div class="exp-staggered-item" style="--stagger-delay: 0.05s;">
+                          <div class="exp-item-header">
+                            <div class="exp-item-title-row">
+                              <h4 class="exp-item-name font-sans">DJS Antariksh</h4>
+                              <span class="exp-item-role font-mono">Science Member</span>
+                            </div>
+                            <span class="exp-item-category font-mono">ASTRONOMY &amp; RESEARCH</span>
+                          </div>
+                          <ul class="exp-item-bullets">
+                            <li>Research space missions and scientific instrumentation through technical studies and presentations.</li>
+                            <li>Explore astrophysics and astrobiology concepts while simplifying complex research for peers.</li>
+                            <li>Contribute to technical sessions and scientific discussions within the committee.</li>
+                          </ul>
+                        </div>
+
+                        <!-- 2. DJS Dhadak -->
+                        <div class="exp-staggered-item" style="--stagger-delay: 0.12s;">
+                          <div class="exp-item-header">
+                            <div class="exp-item-title-row">
+                              <h4 class="exp-item-name font-sans">DJS Dhadak</h4>
+                              <span class="exp-item-role font-mono">Events &amp; PR Senior Co-Com</span>
+                            </div>
+                            <span class="exp-item-category font-mono">PUBLIC RELATIONS &amp; LOGISTICS</span>
+                          </div>
+                          <ul class="exp-item-bullets">
+                            <li>Coordinate planning and execution of cultural events and performances.</li>
+                            <li>Handle publicity, outreach and audience engagement strategies.</li>
+                            <li>Collaborate with multiple teams to ensure smooth event operations.</li>
+                          </ul>
+                        </div>
+
+                        <!-- 3. DJS eXpress -->
+                        <div class="exp-staggered-item" style="--stagger-delay: 0.19s;">
+                          <div class="exp-item-header">
+                            <div class="exp-item-title-row">
+                              <h4 class="exp-item-name font-sans">DJS eXpress</h4>
+                              <span class="exp-item-role font-mono">Marketing Member</span>
+                            </div>
+                            <span class="exp-item-category font-mono">MARKETING &amp; OUTREACH</span>
+                          </div>
+                          <ul class="exp-item-bullets">
+                            <li>Work on promotional campaigns and audience engagement initiatives.</li>
+                            <li>Contribute to partnerships and marketing strategy for events.</li>
+                            <li>Help increase visibility and participation through outreach efforts.</li>
+                          </ul>
+                        </div>
+
+                        <!-- 4. DJS Compute -->
+                        <div class="exp-staggered-item" style="--stagger-delay: 0.26s;">
+                          <div class="exp-item-header">
+                            <div class="exp-item-title-row">
+                              <h4 class="exp-item-name font-sans">DJS Compute</h4>
+                              <span class="exp-item-role font-mono">Junior Web Development Member</span>
+                            </div>
+                            <span class="exp-item-category font-mono">WEB &amp; FRONTEND ENGINEERING</span>
+                          </div>
+                          <ul class="exp-item-bullets">
+                            <li>Contribute to web development projects within the technical committee.</li>
+                            <li>Build and improve responsive web interfaces with the development team.</li>
+                            <li>Gain hands-on experience in collaborative frontend development and project implementation.</li>
+                          </ul>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
               </article>
-
-              <!-- Secondary Branch Path for Node 4: In-depth Achievements & Work -->
-              <div class="secondary-branch-container" id="branch-path-4" aria-label="Secondary Path: Achievements in Academic Core">
-                <div class="branch-conduit-header font-mono">
-                  <div class="branch-track-indicator">
-                    <span class="track-pulse-dot"></span>
-                    <span class="track-line-tag">BRANCH_04 // ACADEMIC &amp; RESEARCH ACHIEVEMENTS</span>
-                  </div>
-                  <span class="branch-count-badge">4 SUB-NODES CONNECTED</span>
-                </div>
-
-                <!-- Secondary Path Sub-nodes Grid -->
-                <div class="branch-subnodes-stream">
-                  <!-- Sub-node 4.1 -->
-                  <div class="branch-subnode-card" id="subnode-4-1">
-                    <div class="subnode-connector font-mono">
-                      <span class="subnode-idx">[04.1]</span>
-                      <span class="subnode-wire"></span>
-                    </div>
-                    <div class="subnode-content">
-                      <div class="subnode-header">
-                        <h4 class="subnode-title">Academic Distinction &amp; Teaching Assistantship</h4>
-                        <span class="subnode-metric-badge font-mono">GPA 3.9/4.0 // DEAN'S LIST</span>
-                      </div>
-                      <p class="subnode-desc">
-                        Honored on Dean's List every semester for academic excellence. Selected as Head Undergraduate Teaching Assistant for Data Structures &amp; Algorithms, mentoring 120+ students.
-                      </p>
-                      <div class="subnode-tags font-mono">
-                        <span class="subnode-tag">Data Structures</span>
-                        <span class="subnode-tag">Algorithms</span>
-                        <span class="subnode-tag">Operating Systems</span>
-                        <span class="subnode-tag">Compilers</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Sub-node 4.2 -->
-                  <div class="branch-subnode-card" id="subnode-4-2">
-                    <div class="subnode-connector font-mono">
-                      <span class="subnode-idx">[04.2]</span>
-                      <span class="subnode-wire"></span>
-                    </div>
-                    <div class="subnode-content">
-                      <div class="subnode-header">
-                        <h4 class="subnode-title">Capstone Project: Distributed Consensus Engine</h4>
-                        <span class="subnode-metric-badge font-mono">BEST CAPSTONE AWARD // 1ST PLACE</span>
-                      </div>
-                      <p class="subnode-desc">
-                        Led 4-engineer team building a visual Raft consensus simulator in Go featuring partition tolerance, leader election, and log replication fault injection.
-                      </p>
-                      <div class="subnode-tags font-mono">
-                        <span class="subnode-tag">Go</span>
-                        <span class="subnode-tag">Raft Protocol</span>
-                        <span class="subnode-tag">Distributed Systems</span>
-                        <span class="subnode-tag">WebSockets</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Sub-node 4.3 -->
-                  <div class="branch-subnode-card" id="subnode-4-3">
-                    <div class="subnode-connector font-mono">
-                      <span class="subnode-idx">[04.3]</span>
-                      <span class="subnode-wire"></span>
-                    </div>
-                    <div class="subnode-content">
-                      <div class="subnode-header">
-                        <h4 class="subnode-title">Collegiate Hackathon Championship</h4>
-                        <span class="subnode-metric-badge font-mono">1ST PLACE OUT OF 120+ TEAMS</span>
-                      </div>
-                      <p class="subnode-desc">
-                        Won 1st place among 120 university teams by developing an emergency dispatch telemetry platform in 36 hours, handling live geo-routing and automated resource assignment.
-                      </p>
-                      <div class="subnode-tags font-mono">
-                        <span class="subnode-tag">Geo-Routing</span>
-                        <span class="subnode-tag">React</span>
-                        <span class="subnode-tag">Node.js</span>
-                        <span class="subnode-tag">PostGIS</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Sub-node 4.4 -->
-                  <div class="branch-subnode-card" id="subnode-4-4">
-                    <div class="subnode-connector font-mono">
-                      <span class="subnode-idx">[04.4]</span>
-                      <span class="subnode-wire"></span>
-                    </div>
-                    <div class="subnode-content">
-                      <div class="subnode-header">
-                        <h4 class="subnode-title">Open Source Society &amp; Technical Mentorship</h4>
-                        <span class="subnode-metric-badge font-mono">300+ STUDENTS MENTORED</span>
-                      </div>
-                      <p class="subnode-desc">
-                        President of University Open Source Society; organized 10+ campus workshops covering Git, clean code architecture, cloud hosting, and competitive programming.
-                      </p>
-                      <div class="subnode-tags font-mono">
-                        <span class="subnode-tag">Leadership</span>
-                        <span class="subnode-tag">Git</span>
-                        <span class="subnode-tag">Workshops</span>
-                        <span class="subnode-tag">Mentorship</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
 
           </div>
