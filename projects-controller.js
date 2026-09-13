@@ -95,7 +95,7 @@ export function initProjectsSystem() {
         if (portalBar) portalBar.style.width = '100%';
       });
 
-      // Switch to project page once shutters close
+      // Switch to project page once shutters close smoothly
       setTimeout(() => {
         overlay.hidden = false;
         overlay.classList.add('is-active');
@@ -106,7 +106,7 @@ export function initProjectsSystem() {
         const viewport = overlay.querySelector('.case-overlay-viewport');
         if (viewport) viewport.scrollTop = 0;
 
-        // Open shutters revealing dedicated project page
+        // Open shutters revealing dedicated project page after brief pause
         setTimeout(() => {
           portal.classList.add('is-opening');
           setTimeout(() => {
@@ -114,9 +114,9 @@ export function initProjectsSystem() {
             if (portalBar) portalBar.style.width = '0%';
             if (sourceCard) sourceCard.classList.remove('is-launching');
             isTransitioning = false;
-          }, 320);
-        }, 120);
-      }, 300);
+          }, 750);
+        }, 350);
+      }, 800);
 
     } else {
       // Instant switch for reduced motion
@@ -183,18 +183,20 @@ export function initProjectsSystem() {
           window.scrollTo({ top: cardPos, behavior: 'smooth' });
         }
 
-        // Open shutters revealing portfolio grid
-        portal.classList.remove('is-closing');
-        portal.classList.add('is-opening');
-
+        // Open shutters revealing portfolio grid after brief pause
         setTimeout(() => {
-          portal.classList.remove('is-active', 'is-opening');
-          if (portalBar) portalBar.style.width = '0%';
-          activeProjectId = null;
-          isTransitioning = false;
+          portal.classList.remove('is-closing');
+          portal.classList.add('is-opening');
+
+          setTimeout(() => {
+            portal.classList.remove('is-active', 'is-opening');
+            if (portalBar) portalBar.style.width = '0%';
+            activeProjectId = null;
+            isTransitioning = false;
+          }, 750);
         }, 300);
 
-      }, 260);
+      }, 800);
 
     } else {
       overlay.classList.remove('is-active');
@@ -276,7 +278,7 @@ export function initProjectsSystem() {
 
       contentContainer.classList.remove('is-switching');
       isTransitioning = false;
-    }, 200);
+    }, 400);
   }
 
   // --------------------------------------------------------------------------

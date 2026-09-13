@@ -294,62 +294,33 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --------------------------------------------------------------------------
-  // 7. HERO HOMEPAGE INTERACTIVE 3D DEPTH & SLIDING TEXT ENGINE
+  // 7. HERO HOMEPAGE INTERACTIVE 3D DEPTH & PORTRAIT STAGE
   // --------------------------------------------------------------------------
   const heroSection = document.getElementById('hero');
   const portraitCard = document.getElementById('portrait-depth-card');
   const portraitImg = document.getElementById('hero-portrait-img');
   const bgTextFuture = document.getElementById('bg-text-future');
   const bgTextNow = document.getElementById('bg-text-now');
-  const hudTag1 = document.getElementById('hud-tag-role');
-  const hudTag2 = document.getElementById('hud-tag-metric');
-  const hudTag3 = document.getElementById('hud-tag-status');
-  const hudTagBottom = document.getElementById('hud-tag-coords');
   const focusIndicator = document.getElementById('focus-indicator');
-  const photoInput = document.getElementById('hero-photo-file-input');
-  const resetPhotoBtn = document.getElementById('btn-reset-photo');
 
   if (heroSection && portraitCard) {
-    let isMouseOverHero = false;
+    let isMouseOverPortrait = false;
     let targetTiltX = 0;
     let targetTiltY = 0;
     let currentTiltX = 0;
     let currentTiltY = 0;
     let animationFrameId = null;
 
-    // Smooth Lerp animation loop for physical responsiveness
+    // Smooth Lerp animation loop for physical responsiveness on the portrait
     const updateParallax = () => {
-      // Linear interpolation for silky-smooth motion
       currentTiltX += (targetTiltX - currentTiltX) * 0.12;
       currentTiltY += (targetTiltY - currentTiltY) * 0.12;
 
-      if (isMouseOverHero) {
-        // Image tilts towards mouse & elevates forward
+      if (isMouseOverPortrait) {
+        // Image tilts towards mouse & elevates forward ONLY when hovering directly on the portrait
         const rotateY = currentTiltX * 12; // degrees
         const rotateX = -currentTiltY * 10; // degrees
         portraitCard.style.transform = `scale(1.06) translateY(-8px) translateZ(50px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`;
-
-        // Background typography slides inversely with parallax depth
-        if (bgTextFuture) {
-          bgTextFuture.style.transform = `translateX(${(currentTiltX * -40 - 30).toFixed(1)}px)`;
-        }
-        if (bgTextNow) {
-          bgTextNow.style.transform = `translateX(${(currentTiltX * 40 + 30).toFixed(1)}px)`;
-        }
-
-        // Surrounding HUD tags slide dynamically around the portrait
-        if (hudTag1) {
-          hudTag1.style.transform = `translate(${(currentTiltX * 15 + 30).toFixed(1)}px, ${(currentTiltY * 10 - 8).toFixed(1)}px) scale(1.02)`;
-        }
-        if (hudTag2) {
-          hudTag2.style.transform = `translate(${(currentTiltX * 20 + 38).toFixed(1)}px, ${(currentTiltY * 12).toFixed(1)}px) scale(1.02)`;
-        }
-        if (hudTag3) {
-          hudTag3.style.transform = `translate(${(currentTiltX * 15 + 30).toFixed(1)}px, ${(currentTiltY * 10 + 8).toFixed(1)}px) scale(1.02)`;
-        }
-        if (hudTagBottom) {
-          hudTagBottom.style.transform = `translate(-50%, ${(currentTiltY * 8 + 18).toFixed(1)}px) scale(1.02)`;
-        }
       }
 
       animationFrameId = requestAnimationFrame(updateParallax);
@@ -358,36 +329,46 @@ document.addEventListener('DOMContentLoaded', () => {
     // Start animation loop
     animationFrameId = requestAnimationFrame(updateParallax);
 
-    // Track mouse position over the hero area
-    heroSection.addEventListener('pointermove', (event) => {
-      const rect = heroSection.getBoundingClientRect();
+    // Track mouse position specifically over the portrait card
+    portraitCard.addEventListener('pointerenter', () => {
+      isMouseOverPortrait = true;
+    });
+
+    portraitCard.addEventListener('pointermove', (event) => {
+      const rect = portraitCard.getBoundingClientRect();
       const clientX = event.clientX - rect.left;
       const clientY = event.clientY - rect.top;
 
-      // Normalized coordinates from -1 to 1
+      // Normalized coordinates from -1 to 1 across the portrait card
       targetTiltX = (clientX / rect.width) * 2 - 1;
       targetTiltY = (clientY / rect.height) * 2 - 1;
+      isMouseOverPortrait = true;
+    });
 
-      if (!isMouseOverHero) {
-        isMouseOverHero = true;
-        heroSection.classList.add('is-hovered');
+    portraitCard.addEventListener('pointerleave', () => {
+      isMouseOverPortrait = false;
+      targetTiltX = 0;
+      targetTiltY = 0;
+      portraitCard.style.transform = '';
+    });
+
+    // Ambient background typography parallax for hero (without affecting portrait)
+    heroSection.addEventListener('pointermove', (event) => {
+      const rect = heroSection.getBoundingClientRect();
+      const clientX = event.clientX - rect.left;
+      const heroNormX = (clientX / rect.width) * 2 - 1;
+
+      if (bgTextFuture) {
+        bgTextFuture.style.transform = `translateX(${(heroNormX * -25).toFixed(1)}px)`;
+      }
+      if (bgTextNow) {
+        bgTextNow.style.transform = `translateX(${(heroNormX * 25).toFixed(1)}px)`;
       }
     });
 
     heroSection.addEventListener('pointerleave', () => {
-      isMouseOverHero = false;
-      targetTiltX = 0;
-      targetTiltY = 0;
-      heroSection.classList.remove('is-hovered');
-
-      // Smooth reset of transforms
-      portraitCard.style.transform = '';
       if (bgTextFuture) bgTextFuture.style.transform = '';
       if (bgTextNow) bgTextNow.style.transform = '';
-      if (hudTag1) hudTag1.style.transform = '';
-      if (hudTag2) hudTag2.style.transform = '';
-      if (hudTag3) hudTag3.style.transform = '';
-      if (hudTagBottom) hudTagBottom.style.transform = '';
     });
 
     // Tap / Click Spotlight Focus Mode
@@ -401,9 +382,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
-    portraitCard.addEventListener('click', (e) => {
-      // Don't trigger toggle if user clicked on photo upload or reset button
-      if (e.target.closest('.terminal-tools')) return;
+    portraitCard.addEventListener('click', () => {
       toggleSpotlight();
     });
 
@@ -413,91 +392,6 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleSpotlight();
       } else if (e.key === 'Escape' && heroSection.classList.contains('is-spotlight-active')) {
         toggleSpotlight();
-      }
-    });
-
-    // ------------------------------------------------------------------------
-    // Custom Photo Upload & Persistence System
-    // ------------------------------------------------------------------------
-    const savedCustomPhoto = localStorage.getItem('hriday_custom_portrait');
-    if (savedCustomPhoto && portraitImg) {
-      // Validate saved photo
-      portraitImg.src = savedCustomPhoto;
-      if (resetPhotoBtn) resetPhotoBtn.style.display = 'inline-block';
-    }
-
-    if (portraitImg) {
-      portraitImg.addEventListener('error', () => {
-        // Fallback to local Hriday-Photo.png if custom photo failed to load
-        if (!portraitImg.src.includes('Hriday-Photo.png')) {
-          portraitImg.src = './Hriday-Photo.png';
-          localStorage.removeItem('hriday_custom_portrait');
-          if (resetPhotoBtn) resetPhotoBtn.style.display = 'none';
-        }
-      });
-    }
-
-    if (photoInput && portraitImg) {
-      photoInput.addEventListener('change', (e) => {
-        const file = e.target.files && e.target.files[0];
-        if (!file) return;
-
-        const reader = new FileReader();
-        reader.onload = (event) => {
-          const result = event.target?.result;
-          if (result && typeof result === 'string') {
-            portraitImg.src = result;
-            try {
-              localStorage.setItem('hriday_custom_portrait', result);
-            } catch (err) {
-              console.warn('Image too large for localStorage, displayed in session only.', err);
-            }
-            if (resetPhotoBtn) resetPhotoBtn.style.display = 'inline-block';
-          }
-        };
-        reader.readAsDataURL(file);
-      });
-    }
-
-    if (resetPhotoBtn && portraitImg) {
-      resetPhotoBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        portraitImg.src = './Hriday-Photo.png';
-        localStorage.removeItem('hriday_custom_portrait');
-        resetPhotoBtn.style.display = 'none';
-        if (photoInput) photoInput.value = '';
-      });
-    }
-
-    // Drag-and-drop custom photo onto portrait frame
-    portraitCard.addEventListener('dragover', (e) => {
-      e.preventDefault();
-      portraitCard.style.borderColor = 'var(--accent-orange)';
-    });
-
-    portraitCard.addEventListener('dragleave', () => {
-      portraitCard.style.borderColor = '';
-    });
-
-    portraitCard.addEventListener('drop', (e) => {
-      e.preventDefault();
-      portraitCard.style.borderColor = '';
-      const file = e.dataTransfer && e.dataTransfer.files[0];
-      if (file && file.type.startsWith('image/') && portraitImg) {
-        const reader = new FileReader();
-        reader.onload = (event) => {
-          const result = event.target?.result;
-          if (result && typeof result === 'string') {
-            portraitImg.src = result;
-            try {
-              localStorage.setItem('hriday_custom_portrait', result);
-            } catch (err) {
-              console.warn('Image too large for localStorage', err);
-            }
-            if (resetPhotoBtn) resetPhotoBtn.style.display = 'inline-block';
-          }
-        };
-        reader.readAsDataURL(file);
       }
     });
   }
@@ -661,10 +555,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!container) return;
     const cards = container.querySelectorAll('.comp-stat-card');
     cards.forEach((card) => {
-      const targetVal = parseFloat(card.getAttribute('data-target') || '0');
       const counterEl = card.querySelector('.counter-val');
+      const rawTarget = counterEl?.getAttribute('data-target') || card.getAttribute('data-target') || '';
+      const targetVal = parseFloat(rawTarget);
+      if (isNaN(targetVal) || targetVal <= 0) return;
+
       const barFill = card.querySelector('.comp-stat-bar-fill');
-      const barTarget = card.getAttribute('data-bar-target') || '0%';
+      const barTarget = card.getAttribute('data-bar-target') || (targetVal > 100 ? '82%' : `${targetVal}%`);
 
       if (barFill) {
         barFill.style.width = barTarget;
@@ -672,15 +569,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (counterEl) {
         let current = 0;
-        const duration = 1200;
+        const duration = 1000;
         const startTime = performance.now();
         const isDecimal = targetVal % 1 !== 0;
 
         function step(now) {
           const elapsed = now - startTime;
           const progress = Math.min(elapsed / duration, 1);
-          // Ease out expo
-          const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+          // Ease out cubic
+          const easeProgress = 1 - Math.pow(1 - progress, 3);
           const currentVal = targetVal * easeProgress;
 
           if (targetVal > 1000) {
@@ -694,6 +591,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
           if (progress < 1) {
             requestAnimationFrame(step);
+          } else {
+            // Ensure exact final value
+            if (targetVal > 1000) {
+              counterEl.textContent = targetVal.toLocaleString();
+            } else if (isDecimal) {
+              counterEl.textContent = targetVal.toFixed(1);
+            } else {
+              counterEl.textContent = targetVal.toString();
+            }
           }
         }
         requestAnimationFrame(step);

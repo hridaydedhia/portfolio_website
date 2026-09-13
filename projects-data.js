@@ -27,7 +27,7 @@ export const PROJECTS_DATA = {
     ],
     status: "PRODUCTION BUILD // STREAMLIT DEPLOYED",
     liveUrl: null,
-    githubUrl: "https://github.com/hridaydedhia/markowitz-portfolio-optimization",
+    githubUrl: "https://github.com/hridaydedhia/markowitz_model",
     metrics: [
       { label: "OPTIMAL SHARPE RATIO", value: "1.48", sub: "Annualized risk-adjusted return" },
       { label: "EXPECTED RETURN E[R]", value: "24.8%", sub: "At max tangency allocation" },
@@ -148,7 +148,7 @@ In an N-asset portfolio, there are N individual variances and N(N-1)/2 unique co
     ],
     status: "ACTIVE RESEARCH // STREAMLIT DEPLOYED",
     liveUrl: null,
-    githubUrl: "https://github.com/hridaydedhia/capm-regime-analysis",
+    githubUrl: "https://github.com/hridaydedhia/CAPM-Model",
     metrics: [
       { label: "SYSTEMATIC BETA (β)", value: "1.24", sub: "Market sensitivity factor" },
       { label: "JENSEN'S ALPHA (α)", value: "+2.1%", sub: "Annualized excess return" },
@@ -252,7 +252,7 @@ The challenge lies in quantifying how much of an individual stock's volatility i
     ],
     status: "⚡ HACKATHON PROJECT // PROTOTYPE SYSTEM",
     liveUrl: null,
-    githubUrl: "https://github.com/hridaydedhia/stockmaster",
+    githubUrl: "https://github.com/MeetBhanushali-xi/stockmaster",
     metrics: [
       { label: "STOCKOUT REDUCTION", value: "34%", sub: "Simulated inventory run-out drop" },
       { label: "RUN-OUT PREDICTION", value: "± 1.2 Days", sub: "Forecasting horizon accuracy" },
@@ -353,7 +353,7 @@ Static thresholds fail because demand is dynamic. If consumption velocity triple
       { name: "Google AI Studio", role: "Rapid prompt engineering, schema contract definition, and model system-instruction calibration." }
     ],
     status: "★ 1ST PLACE WINNER // COLLEGE HACKATHON",
-    liveUrl: "https://paisadiary.vercel.app",
+    liveUrl: "https://guardrail-dev-716976196260.us-west1.run.app",
     githubUrl: null,
     metrics: [
       { label: "AWARD RECOGNITION", value: "1st Place", sub: "College mini hackathon winner" },
